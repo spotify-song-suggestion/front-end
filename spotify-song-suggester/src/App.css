@@ -6,3 +6,13 @@
   border-bottom: 1px solid black;
   padding-bottom: 5px;
 }
+
+
+.header nav .nav-links {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.header nav .nav-links a {
+  text-decoration: none;
+}
