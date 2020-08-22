@@ -24,7 +24,7 @@ const Login = (props) => {
       .post("/api/login", credentials)
       .then((res) => {
         localStorage.setItem("token", res.data.payload);
-        history.push("/protected");
+        history.push("/user_account");
       })
       .catch((err) => console.log("err", err.message));
   };

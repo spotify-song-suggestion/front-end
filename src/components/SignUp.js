@@ -111,7 +111,7 @@ export default function SignUp() {
       <h1>Sign Up</h1>
       <form onSubmit={formSubmit}>
         <label htmlFor="firstName">
-          First Name:
+          First Name:<br/>
           <input
             // data-cy="firstName"
             type="text"
@@ -125,7 +125,7 @@ export default function SignUp() {
           ) : null}
         </label>
         <label htmlFor="lastName">
-          Last Name:
+          Last Name: <br/>
           <input
             // data-cy="lastName"
             type="text"
@@ -139,7 +139,7 @@ export default function SignUp() {
           ) : null}
         </label>
         <label htmlFor="email">
-          Email:
+          Email:<br/>
           <input
             // data-cy="email"
             type="email"
@@ -153,7 +153,7 @@ export default function SignUp() {
           ) : null}
         </label>
         <label htmlFor="password">
-          Password:
+          Password:<br/>
           <input
             // data-cy="password"
             type="password"
