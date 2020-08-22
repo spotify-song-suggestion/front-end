@@ -11,6 +11,7 @@ export default function SignUp() {
     password: "",
   });
 
+  //temp. used to display response data
   const [member, setMember] = useState([]);
 
   // state for whether our button should be disabled or not.

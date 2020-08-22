@@ -2,14 +2,9 @@ import React from "react";
 
 
 
-
-
-
-
-
 export default function Home() {
 
-
+//get request to get saved cards
 
 
 
@@ -21,7 +16,7 @@ export default function Home() {
 
     
     <div className="savedSongs">
-  {/* display saved cards here */}
+  {/* display saved cards here Cards{saved}*/}
     </div>
     </>
   );
