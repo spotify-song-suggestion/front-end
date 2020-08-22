@@ -26,22 +26,24 @@
 
 /*SIGN UP FORM STYLING*/
 
-.signup form {
+.signup form, .editinfo form {
   margin: 0 auto;
   max-width: 80%;
   display: flex;
   flex-direction: column;
   align-content: center;
 }
-.signup form label{
+.signup form label, .editinfo form label{
  
   margin-top: 1%;
 }
 
-.signup form button {
+.signup form button, .editinfo form button {
   max-width: 150px;
   margin: 0 auto;
   margin-top: 1%;
   margin-bottom: 1%;
 
 }
+
+/*USER ACCOUNT STYLING */
