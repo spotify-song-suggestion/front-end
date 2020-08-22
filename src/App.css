@@ -13,6 +13,35 @@
   justify-content: space-evenly;
 }
 
-.header nav .nav-links a {
+.nav-links{
+  display: flex;
+  justify-content: space-evenly;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.nav-links a {
   text-decoration: none;
+}
+
+/*SIGN UP FORM STYLING*/
+
+.signup form {
+  margin: 0 auto;
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+.signup form label{
+ 
+  margin-top: 1%;
+}
+
+.signup form button {
+  max-width: 150px;
+  margin: 0 auto;
+  margin-top: 1%;
+  margin-bottom: 1%;
+
 }

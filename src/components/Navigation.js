@@ -16,14 +16,15 @@ export default function Navigation() {
   const logout = () => {
     setIsLoggedIn(false)
     localStorage.removeItem('token')
+    localStorage.removeItem('Logged In')
   }
   
   const [isLoggedIn, setIsLoggedIn] = useState(loggedIn())
   
 
   return (
-    <nav>
-      <div className="nav-links">
+    <nav className = 'nav-links'>
+      
         <Link to="/">Home</Link>
         <Link to="/search">Search</Link>
         
@@ -38,7 +39,7 @@ export default function Navigation() {
             <Link to = '/signup'>Sign Up</Link>
             </>
             }
-      </div>
+      
     </nav>
   );
 }
