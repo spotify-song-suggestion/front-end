@@ -26,15 +26,22 @@ export default function SignUp() {
   });
 
   // handle form submission
+
+
   const formSubmit = (e) => {
     e.preventDefault();
-    axios
+    if (newMember.password !== confirmPassword){
+      setPasswordsDontMatch(true)
+
+    }else{
+      setPasswordsDontMatch(false)
+      axios
       .post("https://reqres.in/api/member", newMember)
       .then((res) => {
         console.log("New member", res.data);
         // update state with value from API
         setMember([...member, res.data]);
-        console.log("member", member);
+        console.log("member", member.data);
         setNewMember({
           firstName: "",
           lastName: "",
@@ -46,6 +53,10 @@ export default function SignUp() {
         setErrors("There was an error retreiving data");
         console.log(err);
       });
+    }
+    
+
+    
   };
 
   //validation schema
@@ -67,6 +78,12 @@ export default function SignUp() {
       .required("Please create a password")
       .min(8, "Password must be at least 8 characters."),
   });
+
+  //cofirm password settings
+    const [passwordsDontMatch, setPasswordsDontMatch] = useState(false);
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [confirmPasswordError, setConfirmPasswordError] = useState("");
+
 
   //Activate that button if everything is ok!
   useEffect(() => {
@@ -165,6 +182,20 @@ export default function SignUp() {
           {errors.password.length > 0 ? (
             <label className="error">{errors.password}</label>
           ) : null}
+        </label>
+        <label htmlFor="confirmPassword">
+          Confirm Password:<br/>
+          <input
+            // data-cy="password"
+            type="password"
+            name="confirmPassword"
+            placeholder="Re-type Password"
+            // value={newMember.password}
+            // onChange={inputChange}
+          />
+          {/* {errors.password.length > 0 ? (
+            <label className="error">{errors.password}</label>
+          ) : null} */}
         </label>
         <button data-cy="submit" disabled={buttonDisabled} type="submit">
           Submit

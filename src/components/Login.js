@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 
 const Login = (props) => {
   const history = useHistory();
+  
   const [credentials, setCredentials] = useState({
     credentials: {
       username: "",
@@ -21,10 +22,9 @@ const Login = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axiosWithAuth()
-      .post("/api/login", credentials)
+      .post("https://spotify-song-suggestor-x.herokuapp.com/api/auth/login", credentials)
       .then((res) => {
-        localStorage.setItem("token", res.data.payload);
-        history.push("/user_account");
+        console.log(res.data)
       })
       .catch((err) => console.log("err", err.message));
   };
