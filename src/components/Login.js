@@ -25,6 +25,10 @@ const Login = (props) => {
       .post("https://spotify-song-suggestor-x.herokuapp.com/api/auth/login", credentials)
       .then((res) => {
         console.log(res.data)
+        localStorage.setItem('Logged In', 'true' )
+        localStorage.setItem('token', res.data.token)
+        window.location.reload()
+
       })
       .catch((err) => console.log("err", err.message));
   };

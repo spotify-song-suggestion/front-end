@@ -20,10 +20,15 @@ export default function UserAccount() {
 
     return (
         <div className = 'editinfo'>
-            <h2>Dashboard</h2>
-            <h3>Saved Songs</h3>
-            <h3>Personal Information</h3>
+            <div>
+                <h2>Dashboard</h2>
+                <h3>Saved Songs</h3>
+                {/*component of saved songs*/}
+            </div>
+
             <form >
+                <h3>Personal Information</h3>
+
                 <label>First Name: 
                     <input 
                         type= 'text'
