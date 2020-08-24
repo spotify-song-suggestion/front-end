@@ -1,60 +1,46 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import * as yup from "yup";
+import { useHistory } from "react-router-dom";
 
 export default function SignUp() {
-  //set state for new member signing up
-  const [newMember, setNewMember] = useState({
+
+  const {push} = useHistory();
+
+  const initialState = {
     firstName: "",
     lastName: "",
     email: "",
     password: "",
-  });
+  }
+  //set state for new member signing up
+  const [newMember, setNewMember] = useState(initialState);
 
   //temp. used to display response data
-  const [member, setMember] = useState([]);
+  const [members, setMembers] = useState([]);
 
   // state for whether our button should be disabled or not.
-  const [buttonDisabled, setButtonDisabled] = useState(true);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   // state for our errors
-  const [errors, setErrors] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-  });
+  const [errors, setErrors] = useState(initialState);
 
   // handle form submission
 
 
   const formSubmit = (e) => {
     e.preventDefault();
-    if (newMember.password !== confirmPassword){
-      setPasswordsDontMatch(true)
-
-    }else{
-      setPasswordsDontMatch(false)
-      axios
-      .post("https://reqres.in/api/member", newMember)
-      .then((res) => {
-        console.log("New member", res.data);
-        // update state with value from API
-        setMember([...member, res.data]);
-        console.log("member", member.data);
-        setNewMember({
-          firstName: "",
-          lastName: "",
-          email: "",
-          password: "",
-        });
-      })
-      .catch((err) => {
-        setErrors("There was an error retreiving data");
-        console.log(err);
-      });
-    }
     
+      
+        console.log("New member", newMember);
+        // update state with value from API
+        setMembers([...members, newMember]);
+        console.log("members", members);
+        setNewMember(newMember);
+        localStorage.setItem('token' , newMember.firstName)
+        localStorage.setItem('Logged In', true )
+        push("/user_account");
+        //window.location.reload()
 
     
   };
@@ -127,19 +113,19 @@ export default function SignUp() {
     <div className="signup">
       <h1>Sign Up</h1>
       <form onSubmit={formSubmit}>
-        <label htmlFor="firstName">
+        <label>
           First Name:<br/>
           <input
-            // data-cy="firstName"
+           //data-cy="firstName"
             type="text"
             name="firstName"
             placeholder="First Name"
             value={newMember.firstName}
             onChange={inputChange}
           />
-          {errors.firstName.length > 0 ? (
+          {/* {errors.firstName.length > 0 ? (
             <label className="error">{errors.firstName}</label>
-          ) : null}
+          ) : null} */}
         </label>
         <label htmlFor="lastName">
           Last Name: <br/>
@@ -151,9 +137,9 @@ export default function SignUp() {
             value={newMember.lastName}
             onChange={inputChange}
           />
-          {errors.lastName.length > 0 ? (
+          {/* {errors.lastName.length > 0 ? (
             <label className="error">{errors.lastName}</label>
-          ) : null}
+          ) : null} */}
         </label>
         <label htmlFor="email">
           Email:<br/>
@@ -165,9 +151,9 @@ export default function SignUp() {
             value={newMember.email}
             onChange={inputChange}
           />
-          {errors.email.length > 0 ? (
+          {/* {errors.email.length > 0 ? (
             <label className="error">{errors.email}</label>
-          ) : null}
+          ) : null} */}
         </label>
         <label htmlFor="password">
           Password:<br/>
@@ -179,9 +165,9 @@ export default function SignUp() {
             value={newMember.password}
             onChange={inputChange}
           />
-          {errors.password.length > 0 ? (
+          {/* {errors.password.length > 0 ? (
             <label className="error">{errors.password}</label>
-          ) : null}
+          ) : null} */}
         </label>
         <label htmlFor="confirmPassword">
           Confirm Password:<br/>
