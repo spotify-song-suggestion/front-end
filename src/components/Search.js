@@ -15,6 +15,8 @@ const Input = styled.input`
   font-size: 1em;
   margin-bottom: 2em;
   overflow: hidden;
+  outline: none;
+  color: #e8e8e8;
 `;
 const Title = styled.h1`
   margin-bottom: 2em;
@@ -23,7 +25,10 @@ const Title = styled.h1`
 
 
 export default function Search() {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState({
+    artistName: "",
+    songTitle: "",
+  });
   const [searchResults, setSearchResults] = useState(["a"]);
 
   useEffect(() => {
@@ -45,7 +50,11 @@ export default function Search() {
   // Results()
 
   const handleChange = (e) => {
-    setSearchTerm(e.target.value);
+    const newSearch ={
+      ...searchTerm,
+      [e.target.name]: e.target.value,
+    };
+    setSearchTerm(newSearch);
     axios
       .get("https://5f3fba8744212d0016fed1c4.mockapi.io/data", e.target.value)
       .then((response) => {
@@ -65,7 +74,7 @@ export default function Search() {
             name="artistName"
             placeholder="Artist Name"
             onChange={handleChange}
-            value={searchTerm}
+            // value={searchTerm}
           />
         </label>
         <label htmlFor="songTitle">
@@ -75,7 +84,7 @@ export default function Search() {
             name="songTitle"
             placeholder="Song Title"
             onChange={handleChange}
-            value={searchTerm}
+            // value={searchTerm}
           />
         </label>
         {/* <button type="submit">Search</button> */}

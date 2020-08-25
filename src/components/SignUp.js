@@ -16,6 +16,8 @@ const Input = styled.input`
   font-size: 1em;
   margin-bottom: 1em;
   overflow: hidden;
+  outline: none;
+  color: #e8e8e8;
 `;
 const Title = styled.h1`
   margin-bottom: 2em;
@@ -169,7 +171,7 @@ export default function SignUp() {
             // data-cy="email"
             type="email"
             name="email"
-            placeholder="email"
+            placeholder="Email"
             value={newMember.email}
             onChange={inputChange}
           />
