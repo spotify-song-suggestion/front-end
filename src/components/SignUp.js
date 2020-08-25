@@ -2,10 +2,42 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import * as yup from "yup";
 import { useHistory } from "react-router-dom";
+import styled from "styled-components";
+
+// ***** STYLES *****
+const Input = styled.input`
+  background-color: rgba(33, 33, 33, 0.9);
+  height: 2em;
+  width: 20em;
+  margin: 0 1em;
+  border: 1px solid white;
+  border-radius: 25px;
+  text-align: center;
+  font-size: 1em;
+  margin-bottom: 1em;
+  overflow: hidden;
+  outline: none;
+  color: #e8e8e8;
+`;
+const Title = styled.h1`
+  margin-bottom: 2em;
+`;
+const SignUpButton = styled.button`
+  width: 150px;
+  height: 35px;
+  padding-bottom: 5px;
+  font-size: 1.25em;
+  border-radius: 10px;
+  background-color: rgba(29, 185, 84, 0.8);
+`;
+const SignUpText = styled.span`
+  color: #b3b3b3;
+  text-shadow: 1px 1px #212121;
+`;
+// ***** STYLES *****
 
 export default function SignUp() {
-
-  const {push} = useHistory();
+  const { push } = useHistory();
 
   const initialState = {
     firstName: "",
@@ -13,7 +45,7 @@ export default function SignUp() {
     username:"",
     email: "",
     password: "",
-  }
+  };
   //set state for new member signing up
   const [newMember, setNewMember] = useState(initialState);
 
@@ -28,10 +60,9 @@ export default function SignUp() {
 
   // handle form submission
 
-
   const formSubmit = (e) => {
     e.preventDefault();
-    
+
       
         console.log("New member", newMember);
         // update state with value from API
@@ -42,8 +73,6 @@ export default function SignUp() {
         localStorage.setItem('Logged In', true )
         push("/user_account");
         
-
-    
   };
 
   //validation schema
@@ -69,6 +98,7 @@ export default function SignUp() {
       .required("Please create a password")
       .min(8, "Password must be at least 8 characters."),
   });
+
 
   //cofirm password settings
     const [passwordsDontMatch, setPasswordsDontMatch] = useState(false);
@@ -137,12 +167,11 @@ export default function SignUp() {
 
   return (
     <div className="signup">
-      <h1>Sign Up</h1>
+      <Title>Sign Up</Title>
       <form onSubmit={formSubmit}>
-        <label>
-          First Name:<br/>
-          <input
-           //data-cy="firstName"
+        <label htmlFor="firstName">
+          <Input
+            //data-cy="firstName"
             type="text"
             name="firstName"
             placeholder="First Name"
@@ -152,8 +181,7 @@ export default function SignUp() {
         </label>{errors.firstName.length > 0 ? <p className="error">{errors.firstName}</p> : null}
 
         <label htmlFor="lastName">
-          Last Name: <br/>
-          <input
+          <Input
             // data-cy="lastName"
             type="text"
             name="lastName"
@@ -164,12 +192,11 @@ export default function SignUp() {
         </label>{errors.lastName.length > 0 ? <p className = "error">{errors.lastName}</p>: null }
 
         <label htmlFor="email">
-          Email:<br/>
-          <input
+          <Input
             // data-cy="email"
             type="email"
             name="email"
-            placeholder="email"
+            placeholder="Email"
             value={newMember.email}
             onChange={inputChange}
           />
@@ -189,8 +216,7 @@ export default function SignUp() {
 
 
         <label htmlFor="password">
-          Password:<br/>
-          <input
+          <Input
             // data-cy="password"
             type="password"
             name="password"
@@ -202,8 +228,7 @@ export default function SignUp() {
 
 
         <label htmlFor="confirmPassword">
-          Confirm Password:<br/>
-          <input
+          <Input
             // data-cy="password"
             type="password"
             name="confirmPassword"
@@ -211,12 +236,14 @@ export default function SignUp() {
             value={confirmPassword}
             onChange={confirmPasswordChanges}
           />
+
         </label>{confirmPasswordError.length > 0 ? <p className="error">{confirmPasswordError}</p> : null}
                 {passwordsDontMatch ? <p>The passwords you entered do not match</p> : null}
 
         <button data-cy="submit" disabled={buttonDisabled} type="submit">
           Submit
         </button>
+
       </form>
     </div>
   );

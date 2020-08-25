@@ -1,55 +1,62 @@
 .App {
   text-align: center;
+  position: relative;
+  min-height: 100vh;
+}
+html {
+  background-color: #121212;
+  color: 	#b3b3b3;
 }
 
-.header {
+/* Styles moved to Header component */
+/* .header {
   border-bottom: 1px solid black;
   padding-bottom: 5px;
-}
-
-
-.header nav .nav-links {
+} */
+/* Styles Moved to Navigation component */
+/* .header nav .nav-links {
   display: flex;
   justify-content: space-evenly;
-}
+} */
 
-.nav-links{
+/* .nav-links {
   display: flex;
   justify-content: space-evenly;
   max-width: 1300px;
   margin: 0 auto;
-}
+} */
 
-.nav-links a {
+/* .nav-links a {
+  color: #b3b3b3;
   text-decoration: none;
-}
+} */
 
 /*SIGN UP FORM STYLING*/
 
-.signup form, .editinfo form {
+.signup form,
+.editinfo form {
   margin: 0 auto;
   max-width: 80%;
   display: flex;
   flex-direction: column;
   align-content: center;
 }
-.signup form label, .editinfo form label{
- 
+.signup form label,
+.editinfo form label {
   margin-top: 1%;
 }
 
-.signup form button, .editinfo form button {
+.signup form button,
+.editinfo form button {
   max-width: 150px;
   margin: 0 auto;
   margin-top: 1%;
   margin-bottom: 1%;
-
-
 }
 
 /*USER ACCOUNT STYLING */
 
-.editinfo{
+.editinfo {
   margin: 0 auto;
   padding-top: 2%;
   max-width: 900px;
@@ -61,13 +68,13 @@
   margin-right: 3%;
 }
 
-.editinfo form input{
+.editinfo form input {
   margin-bottom: 2%;
   margin-left: 5%;
 }
 /*LOGIN FORM SIGN IN*/
-
-.login{
+/* Moved to Login form */
+/* .login {
   display: flex;
   justify-content: space-around;
   max-width: 550px;
@@ -77,7 +84,5 @@
 }
 
 .login button {
-
   max-width: 150px;
-
-}
+} */

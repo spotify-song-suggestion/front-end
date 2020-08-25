@@ -1,5 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import styled from 'styled-components'
+
+// ***** STYLES *****
+const StyledLink = styled(Link) 
+`color: #b3b3b3;
+text-decoration: none;
+`
+const StyledNav = styled.nav 
+` display: flex;
+justify-content: space-evenly;
+max-width: 1300px;
+margin: 0 auto;
+`
+// ***** STYLES *****
+
 
 export default function Navigation() {
 
@@ -23,24 +38,24 @@ export default function Navigation() {
   
 
   return (
-    <nav className = 'nav-links'>
+    <StyledNav>
       
-        <Link to="/">Home</Link>
-        <Link to="/search">Search</Link>
+        <StyledLink to="/">Home</StyledLink>
+        <StyledLink to="/search">Search</StyledLink>
         
         {isLoggedIn ? 
            <>
 
-            <Link onClick = {logout}>Logout</Link> 
-            <Link to = '/user_account'>My account</Link> 
+            <StyledLink onClick = {logout}>Logout</StyledLink> 
+            <StyledLink to = '/user_account'>My account</StyledLink> 
             </>:
             <> 
-            <Link to="/login">Login</Link> 
-            <Link to = '/signup'>Sign Up</Link>
+            <StyledLink to="/login">Login</StyledLink> 
+            <StyledLink to = '/signup'>Sign Up</StyledLink>
             </>
             }
       
-    </nav>
+    </StyledNav>
   );
 }
 
