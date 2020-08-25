@@ -10,6 +10,7 @@ export default function SignUp() {
   const initialState = {
     firstName: "",
     lastName: "",
+    username:"",
     email: "",
     password: "",
   }
@@ -40,7 +41,7 @@ export default function SignUp() {
         localStorage.setItem('token' , newMember.firstName)
         localStorage.setItem('Logged In', true )
         push("/user_account");
-        //window.location.reload()
+        
 
     
   };
@@ -55,6 +56,10 @@ export default function SignUp() {
       .string()
       .required("Last name is required")
       .min(2, "Name must be at least 2 characters."),
+    username: yup
+      .string()
+      .min(6, 'Must container at least 6 characters')
+      .required('Must create username'),
     email: yup
       .string()
       .email("Must be a valid email address.")
@@ -69,6 +74,27 @@ export default function SignUp() {
     const [passwordsDontMatch, setPasswordsDontMatch] = useState(false);
     const [confirmPassword, setConfirmPassword] = useState("");
     const [confirmPasswordError, setConfirmPasswordError] = useState("");
+   
+    const confirmPasswordSchema = yup.object().shape({
+      confirmPassword: yup.string().required("Please confirm your password")
+    });
+   
+    const confirmPasswordChanges = e =>{
+      e.persist();
+      e.preventDefault();
+      setConfirmPassword(e.target.value);
+
+      yup
+      .reach(confirmPasswordSchema, e.target.name)
+      .validate(e.target.value)
+      .then(valid => {
+        setConfirmPasswordError("");
+      })
+      .catch(err => setConfirmPasswordError(err.errors[0] ));
+      console.log("user info", confirmPassword )
+
+
+    }
 
 
   //Activate that button if everything is ok!
@@ -123,10 +149,8 @@ export default function SignUp() {
             value={newMember.firstName}
             onChange={inputChange}
           />
-          {/* {errors.firstName.length > 0 ? (
-            <label className="error">{errors.firstName}</label>
-          ) : null} */}
-        </label>
+        </label>{errors.firstName.length > 0 ? <p className="error">{errors.firstName}</p> : null}
+
         <label htmlFor="lastName">
           Last Name: <br/>
           <input
@@ -137,10 +161,8 @@ export default function SignUp() {
             value={newMember.lastName}
             onChange={inputChange}
           />
-          {/* {errors.lastName.length > 0 ? (
-            <label className="error">{errors.lastName}</label>
-          ) : null} */}
-        </label>
+        </label>{errors.lastName.length > 0 ? <p className = "error">{errors.lastName}</p>: null }
+
         <label htmlFor="email">
           Email:<br/>
           <input
@@ -151,10 +173,21 @@ export default function SignUp() {
             value={newMember.email}
             onChange={inputChange}
           />
-          {/* {errors.email.length > 0 ? (
-            <label className="error">{errors.email}</label>
-          ) : null} */}
-        </label>
+        </label>{errors.email.length > 0 ? <p className = "error">{errors.email}</p>: null }
+
+        <label>
+          Username:<br/>
+          <input
+           //data-cy="firstName"
+            type="text"
+            name="username"
+            placeholder="username"
+            value={newMember.username}
+            onChange={inputChange}
+          />
+        </label>{errors.username.length > 0 ? <p className="error">{errors.username}</p> : null}
+
+
         <label htmlFor="password">
           Password:<br/>
           <input
@@ -165,10 +198,9 @@ export default function SignUp() {
             value={newMember.password}
             onChange={inputChange}
           />
-          {/* {errors.password.length > 0 ? (
-            <label className="error">{errors.password}</label>
-          ) : null} */}
-        </label>
+        </label>{errors.password.length > 0 ? <p className="error">{errors.password}</p> : null}
+
+
         <label htmlFor="confirmPassword">
           Confirm Password:<br/>
           <input
@@ -176,13 +208,12 @@ export default function SignUp() {
             type="password"
             name="confirmPassword"
             placeholder="Re-type Password"
-            // value={newMember.password}
-            // onChange={inputChange}
+            value={confirmPassword}
+            onChange={confirmPasswordChanges}
           />
-          {/* {errors.password.length > 0 ? (
-            <label className="error">{errors.password}</label>
-          ) : null} */}
-        </label>
+        </label>{confirmPasswordError.length > 0 ? <p className="error">{confirmPasswordError}</p> : null}
+                {passwordsDontMatch ? <p>The passwords you entered do not match</p> : null}
+
         <button data-cy="submit" disabled={buttonDisabled} type="submit">
           Submit
         </button>
