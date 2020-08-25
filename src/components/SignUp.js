@@ -2,17 +2,47 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import * as yup from "yup";
 import { useHistory } from "react-router-dom";
+import styled from "styled-components";
+
+// ***** STYLES *****
+const Input = styled.input`
+  background-color: rgba(33, 33, 33, 0.9);
+  height: 2em;
+  width: 20em;
+  margin: 0 1em;
+  border: 1px solid white;
+  border-radius: 25px;
+  text-align: center;
+  font-size: 1em;
+  margin-bottom: 1em;
+  overflow: hidden;
+`;
+const Title = styled.h1`
+  margin-bottom: 2em;
+`;
+const SignUpButton = styled.button`
+  width: 150px;
+  height: 35px;
+  padding-bottom: 5px;
+  font-size: 1.25em;
+  border-radius: 10px;
+  background-color: rgba(29, 185, 84, 0.8);
+`;
+const SignUpText = styled.span`
+  color: #b3b3b3;
+  text-shadow: 1px 1px #212121;
+`;
+// ***** STYLES *****
 
 export default function SignUp() {
-
-  const {push} = useHistory();
+  const { push } = useHistory();
 
   const initialState = {
     firstName: "",
     lastName: "",
     email: "",
     password: "",
-  }
+  };
   //set state for new member signing up
   const [newMember, setNewMember] = useState(initialState);
 
@@ -27,22 +57,18 @@ export default function SignUp() {
 
   // handle form submission
 
-
   const formSubmit = (e) => {
     e.preventDefault();
-    
-      
-        console.log("New member", newMember);
-        // update state with value from API
-        setMembers([...members, newMember]);
-        console.log("members", members);
-        setNewMember(newMember);
-        localStorage.setItem('token' , newMember.firstName)
-        localStorage.setItem('Logged In', true )
-        push("/user_account");
-        //window.location.reload()
 
-    
+    console.log("New member", newMember);
+    // update state with value from API
+    setMembers([...members, newMember]);
+    console.log("members", members);
+    setNewMember(newMember);
+    localStorage.setItem("token", newMember.firstName);
+    localStorage.setItem("Logged In", true);
+    push("/user_account");
+    //window.location.reload()
   };
 
   //validation schema
@@ -65,11 +91,10 @@ export default function SignUp() {
       .min(8, "Password must be at least 8 characters."),
   });
 
-  //cofirm password settings
-    const [passwordsDontMatch, setPasswordsDontMatch] = useState(false);
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [confirmPasswordError, setConfirmPasswordError] = useState("");
-
+  //confirm password settings
+  const [passwordsDontMatch, setPasswordsDontMatch] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirmPasswordError, setConfirmPasswordError] = useState("");
 
   //Activate that button if everything is ok!
   useEffect(() => {
@@ -111,12 +136,11 @@ export default function SignUp() {
 
   return (
     <div className="signup">
-      <h1>Sign Up</h1>
+      <Title>Sign Up</Title>
       <form onSubmit={formSubmit}>
-        <label>
-          First Name:<br/>
-          <input
-           //data-cy="firstName"
+        <label htmlFor="firstName">
+          <Input
+            //data-cy="firstName"
             type="text"
             name="firstName"
             placeholder="First Name"
@@ -128,8 +152,7 @@ export default function SignUp() {
           ) : null} */}
         </label>
         <label htmlFor="lastName">
-          Last Name: <br/>
-          <input
+          <Input
             // data-cy="lastName"
             type="text"
             name="lastName"
@@ -142,8 +165,7 @@ export default function SignUp() {
           ) : null} */}
         </label>
         <label htmlFor="email">
-          Email:<br/>
-          <input
+          <Input
             // data-cy="email"
             type="email"
             name="email"
@@ -156,8 +178,7 @@ export default function SignUp() {
           ) : null} */}
         </label>
         <label htmlFor="password">
-          Password:<br/>
-          <input
+          <Input
             // data-cy="password"
             type="password"
             name="password"
@@ -170,8 +191,7 @@ export default function SignUp() {
           ) : null} */}
         </label>
         <label htmlFor="confirmPassword">
-          Confirm Password:<br/>
-          <input
+          <Input
             // data-cy="password"
             type="password"
             name="confirmPassword"
@@ -183,9 +203,9 @@ export default function SignUp() {
             <label className="error">{errors.password}</label>
           ) : null} */}
         </label>
-        <button data-cy="submit" disabled={buttonDisabled} type="submit">
-          Submit
-        </button>
+        <SignUpButton data-cy="submit" disabled={buttonDisabled} type="submit">
+          <SignUpText>Submit</SignUpText>
+        </SignUpButton>
       </form>
     </div>
   );
