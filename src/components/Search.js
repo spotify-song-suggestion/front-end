@@ -23,8 +23,8 @@ const Title = styled.h1`
 `;
 // ***** STYLES *****
 
-
 export default function Search() {
+  // Initial state for search
   const [searchTerm, setSearchTerm] = useState({
     artistName: "",
     songTitle: "",
@@ -33,30 +33,35 @@ export default function Search() {
 
   useEffect(() => {
     axios
-      .get("https://5f3fba8744212d0016fed1c4.mockapi.io/data")
+      // .get("https://5f3fba8744212d0016fed1c4.mockapi.io/data")
+      .get('https://api.spotify.com/v1/search')
       .then((response) => {
         const data = response.data;
         setSearchResults(data);
-        console.log("data", data);
+        console.log("data", data[0].Artist);
       })
       .catch((error) => {
         console.log("error retrieving data", error);
       });
   }, [searchTerm]);
 
-  // function Results(){searchResults.filter((data) => {
-  //   return data.toLowerCase().includes(searchTerm.toLowerCase());}
-  // )}
-  // Results()
+  // const Results = (data) => {
+  //   let count= 0;
+  //   let i = count;
+  //   for(i=0; i<=data.length; i++)
+  //  return  (console.log(data[i]))
+  //   // return data.[i].Artist.toLowerCase().includes(searchTerm.toLowerCase());}
+  // }
 
   const handleChange = (e) => {
-    const newSearch ={
+    // handling search fields independently
+    const newSearch = {
       ...searchTerm,
       [e.target.name]: e.target.value,
     };
     setSearchTerm(newSearch);
     axios
-      .get("https://5f3fba8744212d0016fed1c4.mockapi.io/data", e.target.value)
+      .get("https://api.spotify.com/v1/search", e.target.value)
       .then((response) => {
         console.log("response", response);
       })
@@ -94,9 +99,3 @@ export default function Search() {
     </div>
   );
 }
-
-/* <ul>
-          {searchResults.map((item) => (
-            <li key = {item}>{item}</li>
-          ))}
-       </ul>*/
