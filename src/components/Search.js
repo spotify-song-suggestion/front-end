@@ -34,7 +34,7 @@ export default function Search() {
   useEffect(() => {
     axios
       // .get("https://5f3fba8744212d0016fed1c4.mockapi.io/data")
-      .get('https://api.spotify.com/v1/search')
+      .get("https://5f3fba8744212d0016fed1c4.mockapi.io/data")
       .then((response) => {
         const data = response.data;
         setSearchResults(data);
@@ -61,7 +61,7 @@ export default function Search() {
     };
     setSearchTerm(newSearch);
     axios
-      .get("https://api.spotify.com/v1/search", e.target.value)
+      .get("https://5f3fba8744212d0016fed1c4.mockapi.io/data", e.target.value)
       .then((response) => {
         console.log("response", response);
       })

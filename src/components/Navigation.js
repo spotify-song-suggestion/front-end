@@ -6,12 +6,19 @@ import styled from 'styled-components'
 const StyledLink = styled(Link) 
 `color: #b3b3b3;
 text-decoration: none;
+@media (max-width: 600px){
+  font-size: 20px;
+  margin-bottom: 10px;
+}
 `
 const StyledNav = styled.nav 
 ` display: flex;
 justify-content: space-evenly;
 max-width: 1300px;
 margin: 0 auto;
+@media (max-width: 600px){
+  flex-direction: column;
+}
 `
 // ***** STYLES *****
 
