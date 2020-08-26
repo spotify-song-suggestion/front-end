@@ -6,12 +6,12 @@
 }
 html {
   background-color: #121212;
-  color: 	#b3b3b3;
+  color: #b3b3b3;
 }
 
-a:hover{
-text-decoration: none;
-color: #1db954;
+a:hover {
+  text-decoration: none;
+  color: #1db954;
 }
 
 /* Styles moved to Header component */
@@ -93,28 +93,27 @@ color: #1db954;
   max-width: 150px;
 } */
 
-.carousel{
+.carousel {
   width: 1200px;
   margin: 0 auto;
   margin-top: 2px;
-  
 }
 
-.carousel-item img{
+.carousel-item img {
   width: 840px;
   height: 472px;
   object-fit: cover;
 }
 
-.home-h1{
+.home-h1 {
   text-align: left;
   padding-left: 15%;
   padding-top: 2%;
-  padding-bottom:1%;
+  padding-bottom: 1%;
   color: white;
 }
 
-.home-h3{
+.home-h3 {
   color: white;
   text-align: left;
   padding-left: 20%;
@@ -122,7 +121,7 @@ color: #1db954;
   padding-bottom: 1%;
 }
 
-.mood-label{
+.mood-label {
   display: flex;
   justify-content: space-evenly;
   color: white;
@@ -130,24 +129,22 @@ color: #1db954;
   width: 100px;
 }
 
-.mood-input{
-  
+.mood-input {
   margin-bottom: 3%;
 }
 
-.mood-container{
+.mood-container {
   display: flex;
   flex-wrap: wrap;
   max-width: 1100px;
   margin: 0 auto;
 }
 
-.personalInfo{
+.personalInfo {
   display: flex;
   flex-direction: column;
   padding: 1% 5% 1% 5%;
   border: solid #1db954 2px;
-
 }
 
 .personalInfo label {
@@ -157,10 +154,9 @@ color: #1db954;
 .personalInfo button {
   margin-top: 5%;
   width: 100%;
-
 }
 
-button{
+button {
   width: 150px;
   height: 35px;
   padding-bottom: 5px;
@@ -170,3 +166,8 @@ button{
   background-color: rgba(29, 185, 84, 0.8);
 }
 /*840×472.5*/
+
+.trackReturn,
+.artistReturn {
+  background-color: white;
+}
