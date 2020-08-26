@@ -36,7 +36,7 @@ export default function Search() {
     axios
       // .get("https://5f3fba8744212d0016fed1c4.mockapi.io/data")
       // .get("https://spotify-song-suggestor-x.herokuapp.com/")
-      .get("https://songsuggester-nyc.herokuapp.com/artist/Madonna")
+      .get("https://songsuggester-nyc.herokuapp.com/")
       .then((response) => {
         const data = response.data;
         setSearchResults(data);
@@ -79,10 +79,16 @@ export default function Search() {
       .catch();
   };
 
+  const onSubmit = e => {
+    axios.post('https://api.spotify.com/v1/search', {'artistName': 'Kanye', 'songTitle' : 'Stronger'})
+    .then(res => {console.log(res.data)})
+    .catch(err => {console.log(err)})
+  }
+
   return (
     <div className="search">
       <Title>Search by Artist or Song Title</Title>
-      <form>
+      <form onSubmit = {onSubmit}>
         <label htmlFor="artistName">
           <Input
             id="artistName"
@@ -103,7 +109,7 @@ export default function Search() {
             value={searchTerm.songTitle}
           />
         </label>
-        {/* <button type="submit">Search</button> */}
+        <button type="submit">Search</button> 
       </form>
 
       <Cards />

@@ -1,21 +1,33 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-
+import { appContext } from '../utilities/appContext'
 
 
 
 export default function UserAccount() {
 
-    useEffect(()=>{
-        axios.get('https://api.spotify.com/v1', 'bf42e0eac342434b9c9317384e97372f')
-        .then ( res =>{
-            console.log('apifetch success', res.data)
-        })
-        .catch ( err => {
-            console.log( 'api fetch fail', err)
-        })
-    },[])
+    const initialState = useState({
+        firstName: "",
+        lastName: "",
+        username:"",
+        email: "",
+        password: "",
+    })
 
+
+    const [currentUser, setCurrentUser] = useState({initialState})
+
+
+
+
+    const handleChanges = e => {
+       const updateUserInfo = {...currentUser,
+        [e.target.name] : e.target.value}
+    }
+
+    const removeFromList = () => {
+        //function to remove saved song from list
+    }
 
 
     return (
@@ -23,44 +35,22 @@ export default function UserAccount() {
             <div>
                 <h2>Dashboard</h2>
                 <h3>Saved Songs</h3>
-                {/*component of saved songs*/}
+                <div className = 'savedSongsContainer'>
+                    {/* Map over res.data and create card for each. */}
+                </div>
             </div>
 
-            <form >
-                <h3>Personal Information</h3>
+            <div className = 'personalInfo'>
 
-                <label>First Name: 
-                    <input 
-                        type= 'text'
-                        name= 'firstName'
-                        placeholder = 'Enter new first name'
-                        //value = {}
-                        //onChange={handleChanges}
-                        ></input>
-                </label>
-                <label>Last Name: 
-                    <input 
-                        type= 'text'
-                        name= 'lastName'
-                        placeholder = 'Enter new last name'
-                        //value = {}
-                        //onChange={handleChanges}
-                        ></input>
-                </label>
-                <label>Password: 
-                    <input 
-                        type= 'password'
-                        name= 'email'
-                        placeholder = 'Enter new email'
-                        //value = {}
-                        //onChange={handleChanges}
-                        ></input>
+            <label > First Name: 
+                <input
+                name = 'firstName'
+                value = {currentUser.firstName}
+                placeholder = {currentUser.firstName}
+                onclick = {handleChanges}
+                >{currentUser.firstName}</input></label>
 
-                </label>
-              
-              <button>Update</button>
-
-            </form>
+            </div>
 
         </div>
     )

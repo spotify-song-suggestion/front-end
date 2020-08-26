@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axiosWithAuth from "../utilities/axiosWithAuth";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+import { appContext } from '../utilities/appContext';
 
 const Input = styled.input`
   background-color: rgba(33, 33, 33, 0.9);
@@ -41,20 +42,18 @@ const LoginText = styled.span`
 `;
 
 const Login = (props) => {
-  const history = useHistory();
-
-  const [credentials, setCredentials] = useState({
-    credentials: {
+  const {push} = useHistory();
+  const initialFormState = {
       username: "",
       password: "",
-    },
-  });
+  }
+
+  const [credentials, setCredentials] = useState(initialFormState);
 
   const handleChanges = (e) => {
-    setCredentials({
-      ...credentials,
-      [e.target.name]: e.target.value,
-    });
+    e.persist()
+    e.preventDefault()
+    setCredentials({...credentials, [e.target.name]: e.target.value})
   };
 
   const handleSubmit = (e) => {
@@ -64,11 +63,12 @@ const Login = (props) => {
         "https://spotify-song-suggestor-x.herokuapp.com/api/auth/login",
         credentials
       )
+
       .then((res) => {
         console.log(res.data);
-        localStorage.setItem("Logged In", "true");
         localStorage.setItem("token", res.data.token);
-        window.location.reload();
+        localStorage.setItem('Logged In', true )
+        setTimeout(() => {push('/search')}, 2000)
       })
       .catch((err) => console.log("err", err.message));
   };

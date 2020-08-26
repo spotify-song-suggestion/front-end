@@ -5,13 +5,13 @@ describe("Test form inputs", function () {
 
   it("adds text to inputs", function () {
     cy.get('[for="username"] > input')
-      .type("johnDoe@doe.com")
-      .should("have.value", "johnDoe@doe.com");
+      .type("testuser1")
+      .should("have.value", "testuser1");
 
     cy.get('[for="password"] > input')
-      .type("i<3Lambda")
-      .should("have.value", "i<3Lambda");
+      .type("mypassword")
+      .should("have.value", "mypassword");
 
-    cy.contains("Submit").click();
+    cy.contains("Login").click();
   });
 });
