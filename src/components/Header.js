@@ -28,10 +28,11 @@ const Title = styled.h1`
   display: flex;
   justify-content: center;
   color: #1db954;
-  font-size: 3em;
+  font-size: 3.5em;
   margin: 0 auto;
   padding-bottom: 0.6em;
   font-family: 'Do Hyeon', sans-serif;
+  letter-spacing: 3px;
 `;
 const StyledImg = styled.img`
   position: absolute;
