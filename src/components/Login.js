@@ -43,10 +43,14 @@ const LoginText = styled.span`
 
 const Login = (props) => {
   const {push} = useHistory();
+
+
   const initialFormState = {
       username: "",
       password: "",
   }
+
+
 
   const [credentials, setCredentials] = useState(initialFormState);
 
@@ -68,7 +72,9 @@ const Login = (props) => {
         console.log(res.data);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem('Logged In', true )
-        setTimeout(() => {push('/search')}, 2000)
+        push('/user_account')
+        window.location.reload()
+        
       })
       .catch((err) => console.log("err", err.message));
   };

@@ -6,7 +6,7 @@ import { Route, Redirect } from "react-router-dom";
 
 const PrivateRoute = ({component: Component, ...rest}) => {
     
-    console.log('heyeey ', localStorage.getItem("token"))
+    console.log('Going into a Private Route...')
     return (
         <Route {...rest} render={props => {
             if(localStorage.getItem("token")) {

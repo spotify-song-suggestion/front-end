@@ -90,36 +90,15 @@ export default function SignUp() {
       .required("Must include email address."),
     password: yup
       .string()
-      .required("Please create a password")
+      .required("Passwords must Match")
       .min(8, "Password must be at least 8 characters."),
+      
   });
 
 
-  //cofirm password settings
-    const [passwordsDontMatch, setPasswordsDontMatch] = useState(false);
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [confirmPasswordError, setConfirmPasswordError] = useState("");
+  
    
-    const confirmPasswordSchema = yup.object().shape({
-      confirmPassword: yup.string().required("Please confirm your password")
-    });
-   
-    const confirmPasswordChanges = e =>{
-      e.persist();
-      e.preventDefault();
-      setConfirmPassword(e.target.value);
-
-      yup
-      .reach(confirmPasswordSchema, e.target.name)
-      .validate(e.target.value)
-      .then(valid => {
-        setConfirmPasswordError("");
-      })
-      .catch(err => setConfirmPasswordError(err.errors[0] ));
-      console.log("user info", confirmPassword )
-
-
-    }
+    
 
 
   //Activate that button if everything is ok!
@@ -155,6 +134,7 @@ export default function SignUp() {
     const newMemberData = {
       ...newMember,
       [e.target.name]: e.target.value,
+      
     };
     setCredentials({
       ...credentials,
@@ -170,16 +150,16 @@ export default function SignUp() {
 
         console.log("New member", newMember);
         // update state with value from API
-        setPasswordsDontMatch(true)
         setMembers([...members, newMember]);
         console.log("members", members);
         
         console.log(credentials)
         
-        push("/login");
+        
 
-        axios.post('https://spotify-song-suggestor-x.herokuapp.com/api/auth/register', credentials)
-        .then(res=>{console.log(credentials, 'register success', res.data)})
+        axios.post('https://spotify-song-suggestor-x.herokuapp.com/api/auth/register', {username: newMember.username, password: newMember.password})
+        .then(res=>{console.log(credentials, 'register success', res.data);
+         push("/");})
         .catch(err=>{console.log(credentials,'register problem', err)})
         
   };
@@ -246,18 +226,6 @@ export default function SignUp() {
         </label>{errors.password.length > 0 ? <p className="error">{errors.password}</p> : null}
 
 
-        <label htmlFor="confirmPassword">
-          <Input
-            // data-cy="password"
-            type="password"
-            name="confirmPassword"
-            placeholder="Re-type Password"
-            value={confirmPassword}
-            onChange={confirmPasswordChanges}
-          />
-
-        </label>{confirmPasswordError.length > 0 ? <p className="error">{confirmPasswordError}</p> : null}
-                {passwordsDontMatch ? <p>The passwords you entered do not match</p> : null}
 
         <button data-cy="submit" disabled={buttonDisabled} type="submit">
           Submit
