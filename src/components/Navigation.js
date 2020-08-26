@@ -45,7 +45,7 @@ export default function Navigation() {
         
         {isLoggedIn ? 
            <>
-
+            
             <StyledLink onClick = {logout}>Logout</StyledLink> 
             <StyledLink to = '/user_account'>My account</StyledLink> 
             </>:

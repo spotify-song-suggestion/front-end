@@ -66,8 +66,8 @@ const Login = (props) => {
 
       .then((res) => {
         console.log(res.data);
-        localStorage.setItem("Logged In", "true");
         localStorage.setItem("token", res.data.token);
+        localStorage.setItem('Logged In', true )
         setTimeout(() => {push('/search')}, 2000)
       })
       .catch((err) => console.log("err", err.message));

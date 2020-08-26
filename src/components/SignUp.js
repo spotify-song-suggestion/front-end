@@ -170,17 +170,17 @@ export default function SignUp() {
 
         console.log("New member", newMember);
         // update state with value from API
+        setPasswordsDontMatch(true)
         setMembers([...members, newMember]);
         console.log("members", members);
         
         console.log(credentials)
-        localStorage.setItem('token' , newMember.firstName)
-        localStorage.setItem('Logged In', true )
-        push("/user_account");
+        
+        push("/login");
 
-        axios.post('https://spotify-song-suggestor-x.herokuapp.com/api/auth/register/', {credentials})
-        .then(res=>{console.log('register success', res.data)})
-        .catch(err=>{console.log('register problem', err)})
+        axios.post('https://spotify-song-suggestor-x.herokuapp.com/api/auth/register', credentials)
+        .then(res=>{console.log(credentials, 'register success', res.data)})
+        .catch(err=>{console.log(credentials,'register problem', err)})
         
   };
 

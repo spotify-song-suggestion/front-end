@@ -7,11 +7,11 @@ import { appContext } from '../utilities/appContext'
 export default function UserAccount() {
 
     const initialState = useState({
-        firstName: "Charlie",
-        lastName: "Davidson",
-        username:"chardave",
-        email: "char_dave@cd.net",
-        password: "E42157732t!",
+        firstName: "",
+        lastName: "",
+        username:"",
+        email: "",
+        password: "",
     })
 
 
