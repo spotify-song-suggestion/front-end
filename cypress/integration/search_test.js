@@ -4,8 +4,12 @@ describe("test form inputs", function () {
   });
 
   it("Adds text to inputs", function () {
-    cy.get("[#artistName]").type("artist").should("have.value", "artist");
+    cy.get("#artistName")
+      .type("Lyric Dubuque")
+      .should("have.value", "Lyric Dubuque");
 
-    cy.get("[#songTitle]").type("song").should("have.value", "song");
+    cy.get("#songTitle")
+      .type("Dynamic Integration Analyst")
+      .should("have.value", "Dynamic Integration Analyst");
   });
 });
