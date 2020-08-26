@@ -39,7 +39,7 @@ const SignUpText = styled.span`
 
 export default function SignUp() {
   const { push } = useHistory();
-
+  const setCurrentUser = useContext(appContext.setCurrentUser)
   const initialState = {
     firstName: "",
     lastName: "",

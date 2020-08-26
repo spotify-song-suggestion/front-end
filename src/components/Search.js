@@ -29,9 +29,23 @@ export default function Search() {
     artistName: "",
     songTitle: "",
   });
-  const [searchResults, setSearchResults] = useState(["a"]);
+  const [searchResults, setSearchResults] = useState([""]);
 
-  
+  // Get the initial data set
+  useEffect(() => {
+    axios
+      // .get("https://5f3fba8744212d0016fed1c4.mockapi.io/data")
+      // .get("https://spotify-song-suggestor-x.herokuapp.com/")
+      .get("https://songsuggester-nyc.herokuapp.com/")
+      .then((response) => {
+        const data = response.data;
+        setSearchResults(data);
+        console.log("data", data);
+      })
+      .catch((error) => {
+        console.log("error retrieving data", error);
+      });
+  }, [searchTerm]);
 
   // const Results = (data) => {
   //   let count= 0;
@@ -41,6 +55,7 @@ export default function Search() {
   //   // return data.[i].Artist.toLowerCase().includes(searchTerm.toLowerCase());}
   // }
 
+  // Handling changing inputs to the search field
   const handleChange = (e) => {
     // handling search fields independently
     const newSearch = {
@@ -48,8 +63,16 @@ export default function Search() {
       [e.target.name]: e.target.value,
     };
     setSearchTerm(newSearch);
+    // function to send search parameters
+    // const fifteen = inventors.filter(inventor => (inventor.year >= 1500 && inventor.year < 1600));
+    // const filteredSearch = searchResults.filter((item) => {
+    //   // item.Artist.toLowerCase().includes(searchTerm.toLowerCase());
+    //   console.log('searchTerm', searchTerm)
+    // });
+// setSearchResults(filteredSearch)
     axios
-      .post("https://5f3fba8744212d0016fed1c4.mockapi.io/data", e.target.value)
+      // .get("https://spotify-song-suggestor-x.herokuapp.com", e.target.value)
+      .get("https://songsuggester-nyc.herokuapp.com/", e.target.value)
       .then((response) => {
         console.log("response", response);
       })
@@ -73,7 +96,7 @@ export default function Search() {
             name="artistName"
             placeholder="Artist Name"
             onChange={handleChange}
-            // value={searchTerm}
+            value={searchTerm.artistName}
           />
         </label>
         <label htmlFor="songTitle">
@@ -83,10 +106,10 @@ export default function Search() {
             name="songTitle"
             placeholder="Song Title"
             onChange={handleChange}
-            // value={searchTerm}
+            value={searchTerm.songTitle}
           />
         </label>
-        <button type="submit">Search</button> 
+        {/* <button type="submit">Search</button>  */}
       </form>
 
       <Cards />
