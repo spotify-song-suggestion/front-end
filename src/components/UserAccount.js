@@ -30,10 +30,12 @@ export default function UserAccount() {
     }
 
 
+
+
     return (
         <div className = 'editinfo'>
             <div>
-                <h2>Dashboard</h2>
+                <h2>'s aDashboard</h2>
                 <h3>Saved Songs</h3>
                 <div className = 'savedSongsContainer'>
                     {/* Map over res.data and create card for each. */}
@@ -42,13 +44,45 @@ export default function UserAccount() {
 
             <div className = 'personalInfo'>
 
-            <label > First Name: 
+            <label > First Name: <br/>
                 <input
                 name = 'firstName'
                 value = {currentUser.firstName}
                 placeholder = {currentUser.firstName}
                 onclick = {handleChanges}
                 >{currentUser.firstName}</input></label>
+
+            <label > Last Name: <br/>
+                <input
+                name = 'email'
+                value = {currentUser.firstName}
+                placeholder = {currentUser.firstName}
+                onclick = {handleChanges}
+                >{currentUser.firstName}</input></label>
+
+            <label > Email: <br/>
+                <input
+                name = 'username'
+                value = {currentUser.firstName}
+                placeholder = {currentUser.firstName}
+                onclick = {handleChanges}
+                >{currentUser.firstName}</input></label>
+            <label > Username: <br/>
+                <input
+                name = 'username'
+                value = {currentUser.firstName}
+                placeholder = {currentUser.firstName}
+                onclick = {handleChanges}
+                >{currentUser.firstName}</input></label>
+            <label > Password: <br/>
+                <input
+                name = 'username'
+                value = {currentUser.firstName}
+                placeholder = {currentUser.firstName}
+                onclick = {handleChanges}
+                >{currentUser.firstName}</input></label>
+
+            <button>Update Information</button>
 
             </div>
 

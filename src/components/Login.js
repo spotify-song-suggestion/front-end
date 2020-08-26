@@ -72,7 +72,7 @@ const Login = (props) => {
         console.log(res.data);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem('Logged In', true )
-        push('/user_account')
+        push('/search')
         window.location.reload()
         
       })

@@ -31,7 +31,7 @@ const Title = styled.h1`
   font-size: 3em;
   margin: 0 auto;
   padding-bottom: 0.6em;
-  text-shadow: 5px 5px rgb(18, 18, 18);
+  font-family: 'Do Hyeon', sans-serif;
 `;
 const StyledImg = styled.img`
   position: absolute;
