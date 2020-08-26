@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import * as yup from "yup";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+import { appContext } from '../utilities/appContext';
 
 // ***** STYLES *****
 const Input = styled.input`
@@ -46,8 +47,15 @@ export default function SignUp() {
     email: "",
     password: "",
   };
+ 
+    const setIsLoggedIn = useContext(appContext).setIsLoggedIn;
+  
+ 
+
   //set state for new member signing up
   const [newMember, setNewMember] = useState(initialState);
+   //register credentials
+   const [credentials, setCredentials] = useState({username: newMember.username, password: newMember.password})
 
   //temp. used to display response data
   const [members, setMembers] = useState([]);
@@ -60,23 +68,7 @@ export default function SignUp() {
 
   // handle form submission
 
-  const formSubmit = (e) => {
-    e.preventDefault();
 
-        console.log("New member", newMember);
-        // update state with value from API
-        setMembers([...members, newMember]);
-        console.log("members", members);
-        setNewMember(newMember);
-        localStorage.setItem('token' , newMember.firstName)
-        localStorage.setItem('Logged In', true )
-        push("/user_account");
-
-        axios.get('https://spotify-song-suggestor-x.herokuapp.com/api/auth/register', {})
-        .then(res=>{console.log(res.data)})
-        .catch(err=>{console.log(err)})
-        
-  };
 
   //validation schema
   const formSchema = yup.object().shape({
@@ -164,8 +156,32 @@ export default function SignUp() {
       ...newMember,
       [e.target.name]: e.target.value,
     };
+    setCredentials({
+      ...credentials,
+      username: newMember.username,
+      password: newMember.password
+    })
     validateChange(e);
     setNewMember(newMemberData);
+  };
+
+  const formSubmit = (e) => {
+    e.preventDefault();
+
+        console.log("New member", newMember);
+        // update state with value from API
+        setMembers([...members, newMember]);
+        console.log("members", members);
+        
+        console.log(credentials)
+        localStorage.setItem('token' , newMember.firstName)
+        localStorage.setItem('Logged In', true )
+        push("/user_account");
+
+        axios.post('https://spotify-song-suggestor-x.herokuapp.com/api/auth/register/', {credentials})
+        .then(res=>{console.log('register success', res.data)})
+        .catch(err=>{console.log('register problem', err)})
+        
   };
 
   return (
@@ -206,8 +222,8 @@ export default function SignUp() {
         </label>{errors.email.length > 0 ? <p className = "error">{errors.email}</p>: null }
 
         <label>
-          Username:<br/>
-          <input
+          
+          <Input
            //data-cy="firstName"
             type="text"
             name="username"
