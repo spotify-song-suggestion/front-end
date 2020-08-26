@@ -23,8 +23,8 @@ const Title = styled.h1`
 `;
 // ***** STYLES *****
 
-
 export default function Search() {
+  // Initial state for search
   const [searchTerm, setSearchTerm] = useState({
     artistName: "",
     songTitle: "",
@@ -33,13 +33,17 @@ export default function Search() {
 
   
 
-  // function Results(){searchResults.filter((data) => {
-  //   return data.toLowerCase().includes(searchTerm.toLowerCase());}
-  // )}
-  // Results()
+  // const Results = (data) => {
+  //   let count= 0;
+  //   let i = count;
+  //   for(i=0; i<=data.length; i++)
+  //  return  (console.log(data[i]))
+  //   // return data.[i].Artist.toLowerCase().includes(searchTerm.toLowerCase());}
+  // }
 
   const handleChange = (e) => {
-    const newSearch ={
+    // handling search fields independently
+    const newSearch = {
       ...searchTerm,
       [e.target.name]: e.target.value,
     };
@@ -89,9 +93,3 @@ export default function Search() {
     </div>
   );
 }
-
-/* <ul>
-          {searchResults.map((item) => (
-            <li key = {item}>{item}</li>
-          ))}
-       </ul>*/
