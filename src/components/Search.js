@@ -31,18 +31,7 @@ export default function Search() {
   });
   const [searchResults, setSearchResults] = useState(["a"]);
 
-  useEffect(() => {
-    axios
-      .get("https://5f3fba8744212d0016fed1c4.mockapi.io/data")
-      .then((response) => {
-        const data = response.data;
-        setSearchResults(data);
-        console.log("data", data);
-      })
-      .catch((error) => {
-        console.log("error retrieving data", error);
-      });
-  }, [searchTerm]);
+  
 
   // function Results(){searchResults.filter((data) => {
   //   return data.toLowerCase().includes(searchTerm.toLowerCase());}
@@ -56,17 +45,23 @@ export default function Search() {
     };
     setSearchTerm(newSearch);
     axios
-      .get("https://5f3fba8744212d0016fed1c4.mockapi.io/data", e.target.value)
+      .post("https://5f3fba8744212d0016fed1c4.mockapi.io/data", e.target.value)
       .then((response) => {
         console.log("response", response);
       })
       .catch();
   };
 
+  const onSubmit = e => {
+    axios.post('https://api.spotify.com/v1/search', {'artistName': 'Kanye', 'songTitle' : 'Stronger'})
+    .then(res => {console.log(res.data)})
+    .catch(err => {console.log(err)})
+  }
+
   return (
     <div className="search">
       <Title>Search by Artist or Song Title</Title>
-      <form>
+      <form onSubmit = {onSubmit}>
         <label htmlFor="artistName">
           <Input
             id="artistName"
@@ -87,7 +82,7 @@ export default function Search() {
             // value={searchTerm}
           />
         </label>
-        {/* <button type="submit">Search</button> */}
+        <button type="submit">Search</button> 
       </form>
 
       <Cards />

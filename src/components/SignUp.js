@@ -63,7 +63,6 @@ export default function SignUp() {
   const formSubmit = (e) => {
     e.preventDefault();
 
-      
         console.log("New member", newMember);
         // update state with value from API
         setMembers([...members, newMember]);
@@ -72,6 +71,10 @@ export default function SignUp() {
         localStorage.setItem('token' , newMember.firstName)
         localStorage.setItem('Logged In', true )
         push("/user_account");
+
+        axios.get('https://spotify-song-suggestor-x.herokuapp.com/api/auth/register', {})
+        .then(res=>{console.log(res.data)})
+        .catch(err=>{console.log(err)})
         
   };
 

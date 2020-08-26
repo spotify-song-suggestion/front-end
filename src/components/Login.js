@@ -41,7 +41,7 @@ const LoginText = styled.span`
 `;
 
 const Login = (props) => {
-  const history = useHistory();
+  const {push} = useHistory();
 
   const [credentials, setCredentials] = useState({
     credentials: {
@@ -68,7 +68,7 @@ const Login = (props) => {
         console.log(res.data);
         localStorage.setItem("Logged In", "true");
         localStorage.setItem("token", res.data.token);
-        window.location.reload();
+        setTimeout(() => {push('/search')}, 2000)
       })
       .catch((err) => console.log("err", err.message));
   };
