@@ -39,7 +39,7 @@ const SignUpText = styled.span`
 
 export default function SignUp() {
   const { push } = useHistory();
-  const setCurrentUser = useContext(appContext.setCurrentUser)
+  
   const initialState = {
     firstName: "",
     lastName: "",
@@ -49,7 +49,8 @@ export default function SignUp() {
   };
  
     const setIsLoggedIn = useContext(appContext).setIsLoggedIn;
-  
+    const setCurrentUser = useContext(appContext).setCurrentUser;
+    const currentUser = useContext(appContext).currentUser;
  
 
   //set state for new member signing up
@@ -150,16 +151,18 @@ export default function SignUp() {
 
         console.log("New member", newMember);
         // update state with value from API
+        setCurrentUser(newMember)
         setMembers([...members, newMember]);
         console.log("members", members);
         
-        console.log(credentials)
+        console.log(credentials, 'currentUser' , currentUser)
         
         
 
         axios.post('https://spotify-song-suggestor-x.herokuapp.com/api/auth/register', {username: newMember.username, password: newMember.password})
         .then(res=>{console.log(credentials, 'register success', res.data);
-         push("/");})
+          alert('account created, please sign in')
+          push("/login");})
         .catch(err=>{console.log(credentials,'register problem', err)})
         
   };

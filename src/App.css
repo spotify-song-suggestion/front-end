@@ -2,6 +2,7 @@
   text-align: center;
   position: relative;
   min-height: 100vh;
+  background-color: #121212;
 }
 html {
   background-color: #121212;
@@ -86,3 +87,26 @@ html {
 .login button {
   max-width: 150px;
 } */
+
+.carousel{
+  width: 1200px;
+  margin: 0 auto;
+  margin-top: 2px;
+  
+}
+
+.carousel-item img{
+  width: 840px;
+  height: 472px;
+  object-fit: cover;
+}
+
+.home-h1{
+  text-align: left;
+  padding-left: 15%;
+  padding-top: 2%;
+  padding-bottom:1%;
+  color: white;
+}
+
+/*840×472.5*/

@@ -3,6 +3,7 @@ import Navigation from "./Navigation";
 import styled from "styled-components";
 import spotify from "../img/spotify.png";
 
+
 // ***** STYLES *****
 const MainHeader = styled.div`
   display: flex;
@@ -15,7 +16,7 @@ const MainHeader = styled.div`
 const StyledHeader = styled.div`
   background-color: rgba(33, 33, 33, 0.9);
   width: 100%;
-  height: 100px;
+  
   padding-bottom: 15px;
   padding-top: 5px;
   @media (max-width: 600px) {
@@ -54,6 +55,7 @@ export default function Header() {
       <StyledHeader>
         <Title>Spotify Song Suggester</Title>
         <Navigation />
+    
       </StyledHeader>
     </MainHeader>
   );

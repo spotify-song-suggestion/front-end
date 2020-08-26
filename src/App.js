@@ -13,7 +13,13 @@ import Footer from "./components/Footer";
 import UserAccount from "./components/UserAccount";
 
 function App() {
-
+  const initialState = {
+    firstName: "",
+    lastName: "",
+    username:"",
+    email: "",
+    password: "",
+  };
   const loggedIn = () => {
     if(localStorage.getItem('Logged In') === 'true') {
         return true;
@@ -30,7 +36,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+       <Header/>
 
       <appContext.Provider value = {{
         isLoggedIn: isLoggedIn,
