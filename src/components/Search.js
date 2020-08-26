@@ -109,7 +109,7 @@ export default function Search() {
             value={searchTerm.songTitle}
           />
         </label>
-        <button type="submit">Search</button> 
+        {/* <button type="submit">Search</button>  */}
       </form>
 
       <Cards />

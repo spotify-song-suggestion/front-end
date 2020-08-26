@@ -3,7 +3,7 @@ import axios from "axios";
 import * as yup from "yup";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { appContext } from '../utilities/appContext';
+import { appContext } from "../utilities/appContext";
 
 // ***** STYLES *****
 const Input = styled.input`
@@ -43,19 +43,20 @@ export default function SignUp() {
   const initialState = {
     firstName: "",
     lastName: "",
-    username:"",
+    username: "",
     email: "",
     password: "",
   };
- 
-    const setIsLoggedIn = useContext(appContext).setIsLoggedIn;
-  
- 
+
+  const setIsLoggedIn = useContext(appContext).setIsLoggedIn;
 
   //set state for new member signing up
   const [newMember, setNewMember] = useState(initialState);
-   //register credentials
-   const [credentials, setCredentials] = useState({username: newMember.username, password: newMember.password})
+  //register credentials
+  const [credentials, setCredentials] = useState({
+    username: newMember.username,
+    password: newMember.password,
+  });
 
   //temp. used to display response data
   const [members, setMembers] = useState([]);
@@ -67,8 +68,6 @@ export default function SignUp() {
   const [errors, setErrors] = useState(initialState);
 
   // handle form submission
-
-
 
   //validation schema
   const formSchema = yup.object().shape({
@@ -82,8 +81,8 @@ export default function SignUp() {
       .min(2, "Name must be at least 2 characters."),
     username: yup
       .string()
-      .min(6, 'Must container at least 6 characters')
-      .required('Must create username'),
+      .min(6, "Must container at least 6 characters")
+      .required("Must create username"),
     email: yup
       .string()
       .email("Must be a valid email address.")
@@ -94,33 +93,29 @@ export default function SignUp() {
       .min(8, "Password must be at least 8 characters."),
   });
 
-
   //cofirm password settings
-    const [passwordsDontMatch, setPasswordsDontMatch] = useState(false);
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [confirmPasswordError, setConfirmPasswordError] = useState("");
-   
-    const confirmPasswordSchema = yup.object().shape({
-      confirmPassword: yup.string().required("Please confirm your password")
-    });
-   
-    const confirmPasswordChanges = e =>{
-      e.persist();
-      e.preventDefault();
-      setConfirmPassword(e.target.value);
+  const [passwordsDontMatch, setPasswordsDontMatch] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirmPasswordError, setConfirmPasswordError] = useState("");
 
-      yup
+  const confirmPasswordSchema = yup.object().shape({
+    confirmPassword: yup.string().required("Please confirm your password"),
+  });
+
+  const confirmPasswordChanges = (e) => {
+    e.persist();
+    e.preventDefault();
+    setConfirmPassword(e.target.value);
+
+    yup
       .reach(confirmPasswordSchema, e.target.name)
       .validate(e.target.value)
-      .then(valid => {
+      .then((valid) => {
         setConfirmPasswordError("");
       })
-      .catch(err => setConfirmPasswordError(err.errors[0] ));
-      console.log("user info", confirmPassword )
-
-
-    }
-
+      .catch((err) => setConfirmPasswordError(err.errors[0]));
+    console.log("user info", confirmPassword);
+  };
 
   //Activate that button if everything is ok!
   useEffect(() => {
@@ -159,8 +154,8 @@ export default function SignUp() {
     setCredentials({
       ...credentials,
       username: newMember.username,
-      password: newMember.password
-    })
+      password: newMember.password,
+    });
     validateChange(e);
     setNewMember(newMemberData);
   };
@@ -168,20 +163,27 @@ export default function SignUp() {
   const formSubmit = (e) => {
     e.preventDefault();
 
-        console.log("New member", newMember);
-        // update state with value from API
-        setPasswordsDontMatch(true)
-        setMembers([...members, newMember]);
-        console.log("members", members);
-        
-        console.log(credentials)
-        
-        push("/login");
+    console.log("New member", newMember);
+    // update state with value from API
+    setPasswordsDontMatch(true);
+    setMembers([...members, newMember]);
+    console.log("members", members);
 
-        axios.post('https://spotify-song-suggestor-x.herokuapp.com/api/auth/register', credentials)
-        .then(res=>{console.log(credentials, 'register success', res.data)})
-        .catch(err=>{console.log(credentials,'register problem', err)})
-        
+    console.log(credentials);
+
+    push("/login");
+
+    axios
+      .post(
+        "https://spotify-song-suggestor-x.herokuapp.com/api/auth/register",
+        credentials
+      )
+      .then((res) => {
+        console.log(credentials, "register success", res.data);
+      })
+      .catch((err) => {
+        console.log(credentials, "register problem", err);
+      });
   };
 
   return (
@@ -197,7 +199,10 @@ export default function SignUp() {
             value={newMember.firstName}
             onChange={inputChange}
           />
-        </label>{errors.firstName.length > 0 ? <p className="error">{errors.firstName}</p> : null}
+        </label>
+        {errors.firstName.length > 0 ? (
+          <p className="error">{errors.firstName}</p>
+        ) : null}
 
         <label htmlFor="lastName">
           <Input
@@ -208,7 +213,10 @@ export default function SignUp() {
             value={newMember.lastName}
             onChange={inputChange}
           />
-        </label>{errors.lastName.length > 0 ? <p className = "error">{errors.lastName}</p>: null }
+        </label>
+        {errors.lastName.length > 0 ? (
+          <p className="error">{errors.lastName}</p>
+        ) : null}
 
         <label htmlFor="email">
           <Input
@@ -219,20 +227,24 @@ export default function SignUp() {
             value={newMember.email}
             onChange={inputChange}
           />
-        </label>{errors.email.length > 0 ? <p className = "error">{errors.email}</p>: null }
+        </label>
+        {errors.email.length > 0 ? (
+          <p className="error">{errors.email}</p>
+        ) : null}
 
         <label>
-          
           <Input
-           //data-cy="firstName"
+            //data-cy="firstName"
             type="text"
             name="username"
-            placeholder="username"
+            placeholder="Username"
             value={newMember.username}
             onChange={inputChange}
           />
-        </label>{errors.username.length > 0 ? <p className="error">{errors.username}</p> : null}
-
+        </label>
+        {errors.username.length > 0 ? (
+          <p className="error">{errors.username}</p>
+        ) : null}
 
         <label htmlFor="password">
           <Input
@@ -243,8 +255,10 @@ export default function SignUp() {
             value={newMember.password}
             onChange={inputChange}
           />
-        </label>{errors.password.length > 0 ? <p className="error">{errors.password}</p> : null}
-
+        </label>
+        {errors.password.length > 0 ? (
+          <p className="error">{errors.password}</p>
+        ) : null}
 
         <label htmlFor="confirmPassword">
           <Input
@@ -255,14 +269,17 @@ export default function SignUp() {
             value={confirmPassword}
             onChange={confirmPasswordChanges}
           />
+        </label>
+        {confirmPasswordError.length > 0 ? (
+          <p className="error">{confirmPasswordError}</p>
+        ) : null}
+        {passwordsDontMatch ? (
+          <p>The passwords you entered do not match</p>
+        ) : null}
 
-        </label>{confirmPasswordError.length > 0 ? <p className="error">{confirmPasswordError}</p> : null}
-                {passwordsDontMatch ? <p>The passwords you entered do not match</p> : null}
-
-        <button data-cy="submit" disabled={buttonDisabled} type="submit">
-          Submit
-        </button>
-
+        <SignUpButton data-cy="submit" disabled={buttonDisabled} type="submit">
+          <SignUpText>Submit</SignUpText>
+        </SignUpButton>
       </form>
     </div>
   );
