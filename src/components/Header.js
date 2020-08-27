@@ -3,7 +3,6 @@ import Navigation from "./Navigation";
 import styled from "styled-components";
 import spotify from "../img/spotify.png";
 
-
 // ***** STYLES *****
 const MainHeader = styled.div`
   display: flex;
@@ -16,12 +15,12 @@ const MainHeader = styled.div`
 const StyledHeader = styled.div`
   background-color: rgba(33, 33, 33, 0.9);
   width: 100%;
-  
+
   padding-bottom: 15px;
   padding-top: 5px;
   @media (max-width: 600px) {
     flex-direction: column;
-    margin-bottom: 175px;
+    margin: 100px 0 10px;
   }
 `;
 const Title = styled.h1`
@@ -31,8 +30,9 @@ const Title = styled.h1`
   font-size: 3.5em;
   margin: 0 auto;
   padding-bottom: 0.6em;
-  font-family: 'Do Hyeon', sans-serif;
-  letter-spacing: 3px;
+  ${"" /* font-family: "Do Hyeon", sans-serif; */}
+  letter-spacing: 2px;
+  text-shadow: 3px 3px #121212;
 `;
 const StyledImg = styled.img`
   position: absolute;
@@ -56,7 +56,6 @@ export default function Header() {
       <StyledHeader>
         <Title>Spotify Song Suggester</Title>
         <Navigation />
-    
       </StyledHeader>
     </MainHeader>
   );

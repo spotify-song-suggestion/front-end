@@ -144,24 +144,6 @@ export default function SignUp() {
   const formSubmit = (e) => {
     e.preventDefault();
 
-<<<<<<< HEAD
-        console.log("New member", newMember);
-        // update state with value from API
-        
-        setMembers([...members, newMember]);
-        console.log("members", members);
-        
-        console.log(credentials, 'currentUser' , currentUser)
-        
-        
-
-        axios.post('https://spotify-song-suggestor-x.herokuapp.com/api/auth/register', {username: newMember.username, password: newMember.password})
-        .then(res=>{console.log(credentials, 'register success', res.data);
-          alert('account created, please sign in')
-          push("/login");})
-        .catch(err=>{console.log(credentials,'register problem', err)})
-        
-=======
     console.log("New member", newMember);
     // update state with value from API
     setCurrentUser(newMember);
@@ -183,7 +165,6 @@ export default function SignUp() {
       .catch((err) => {
         console.log(credentials, "register problem", err);
       });
->>>>>>> 6c9b742a76f4e273dd211b0768fe0bba0ed5b617
   };
 
   return (

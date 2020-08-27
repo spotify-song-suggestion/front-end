@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import axiosWithAuth from "../utilities/axiosWithAuth";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { appContext } from '../utilities/appContext';
+import { appContext } from "../utilities/appContext";
 
 const Input = styled.input`
   background-color: rgba(33, 33, 33, 0.9);
@@ -19,7 +19,9 @@ const Input = styled.input`
   color: #e8e8e8;
 `;
 const Title = styled.h1`
-  margin-bottom: 2em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  color: #b3b3b3;
 `;
 
 const LoginForm = styled.form`
@@ -42,22 +44,19 @@ const LoginText = styled.span`
 `;
 
 const Login = (props) => {
-  const {push} = useHistory();
-
+  const { push } = useHistory();
 
   const initialFormState = {
-      username: "",
-      password: "",
-  }
-
-
+    username: "",
+    password: "",
+  };
 
   const [credentials, setCredentials] = useState(initialFormState);
 
   const handleChanges = (e) => {
-    e.persist()
-    e.preventDefault()
-    setCredentials({...credentials, [e.target.name]: e.target.value})
+    e.persist();
+    e.preventDefault();
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
@@ -71,10 +70,9 @@ const Login = (props) => {
       .then((res) => {
         console.log(res.data);
         localStorage.setItem("token", res.data.token);
-        localStorage.setItem('Logged In', true )
-        push('/search')
-        window.location.reload()
-        
+        localStorage.setItem("Logged In", true);
+        push("/search");
+        window.location.reload();
       })
       .catch((err) => console.log("err", err.message));
   };

@@ -4,6 +4,13 @@ import axios from "axios";
 import styled from "styled-components";
 
 // ***** STYLES *****
+const StyledSearch = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #b3b3b3;
+`;
+
 
 const Input = styled.input`
   background-color: rgba(33, 33, 33, 0.9);
@@ -93,7 +100,7 @@ export default function Search() {
   };
 
   return (
-    <div className="search">
+    <StyledSearch>
       <Title>Search by Artist or Song Title</Title>
       <form>
         <label htmlFor="name" onSubmit={onSubmit}>
@@ -109,6 +116,7 @@ export default function Search() {
       </form>
 
       <Cards artistResults={artistResults} trackResults={trackResults} />
-    </div>
+      
+    </StyledSearch>
   );
 }
