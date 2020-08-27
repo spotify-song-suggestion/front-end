@@ -137,6 +137,7 @@ export default function SignUp() {
       [e.target.name]: e.target.value,
       
     };
+    setCurrentUser(newMember)
     setCredentials({
       ...credentials,
       username: newMember.username,
@@ -151,7 +152,7 @@ export default function SignUp() {
 
         console.log("New member", newMember);
         // update state with value from API
-        setCurrentUser(newMember)
+        
         setMembers([...members, newMember]);
         console.log("members", members);
         

@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
 import Carousel from './Courasel'
+import axios from 'axios';
+import { appContext } from '../utilities/appContext';
+
 
 
 export default function Home() {
   //get request to get saved cards
+
+  const currentUser = useContext(appContext).currentUser;
+  useEffect(()=>{
+    console.log(currentUser)
+
+    axios.get('https://api.spotify.com/authorize' , 'bf42e0eac342434b9c9317384e97372f')
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+  })
 
    //List of all possible moods
    const allMoods = ['acoustic', 'relaxing', 'energy', 'joyful', 'fitness', 'rebelious', 'clean', 'explicit', 'dance', 'latin', 'foreign' ]
