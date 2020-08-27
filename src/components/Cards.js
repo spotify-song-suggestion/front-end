@@ -5,20 +5,24 @@ const Results = styled.div`
   display: flex;
   justify-content: space-around;
 `;
-
+const SaveButton = styled.button`
+  width: 100px;
+  height: 25px;
+  padding-bottom: 10px;
+  font-size: 1em;
+  border-radius: 10px;
+  background-color: blue;
+`;
 export default function Cards(props) {
-  // props should come from search results
-  console.log("props", props);
-  console.log("props artist", props.artistResults[0]);
-  console.log("props track", props.trackResults);
+  // props come from search results
+  // console.log("props", props);
+  // console.log("props artist", props.artistResults[0]);
+  // console.log("props track", props.trackResults);
   // set state for an array of savedSongs
 
   // onClick handler needed to add the item to the savedSongs array(spread operator)
 
   return (
-    // <h1>Cards Here</h1>
-    // Return cards based on search results. Pseudo code below. Will display album art if available, artist name, album name and song title. Each card will have a "save" button to add the selection to an array of cards to be displayed on the Home page.
-
     <Results>
       <div className="artist">
         <h3>Artist results</h3>
@@ -28,7 +32,7 @@ export default function Cards(props) {
             <p>{item.name}</p>
             <p>Genres: {item.genres}</p>
             <p>Popularity: {item.popularity}</p>
-            <button>Save</button>
+            <SaveButton>Save</SaveButton>
           </div>
         ))}
       </div>
@@ -40,7 +44,7 @@ export default function Cards(props) {
             <p>{item.name}</p>
             <p>Artist: {item.artists[0].name}</p>
             <p>Popularity: {item.popularity}</p>
-            <button>Save</button>
+            <SaveButton>Save</SaveButton>
           </div>
         ))}
       </div>

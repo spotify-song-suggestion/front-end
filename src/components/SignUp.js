@@ -21,7 +21,9 @@ const Input = styled.input`
   color: #e8e8e8;
 `;
 const Title = styled.h1`
-  margin-bottom: 2em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  color: #b3b3b3;
 `;
 const SignUpButton = styled.button`
   width: 150px;

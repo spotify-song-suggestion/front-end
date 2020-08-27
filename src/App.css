@@ -155,8 +155,8 @@ a:hover {
   margin-top: 5%;
   width: 100%;
 }
-
-button {
+/* Styling is in UserAccount component */
+/* button {
   width: 150px;
   height: 35px;
   padding-bottom: 5px;
@@ -164,7 +164,7 @@ button {
   border-radius: 10px;
   color: white;
   background-color: rgba(29, 185, 84, 0.8);
-}
+} */
 /*840×472.5*/
 
 .trackReturn,
