@@ -10,11 +10,6 @@ const Results = styled.div`
   }
 `;
 const SaveButton = styled.button`
-  ${"" /* width: 100px;
-  height: 25px;
-  padding-bottom: 10px; */}
-  ${"" /* display: flex;
-  align-self: center; */}
   padding: 0 20px;
   font-size: 1em;
   border-radius: 10px;
@@ -31,9 +26,9 @@ const ArtistResults = styled.div`
   background-color: rgba(33, 33, 33, 0.6);
   display: flex;
   flex-direction: column;
-  flex: 1;
+  ${'' /* flex: 1; */}
   height: 550px;
-  border: 1 px solid black;
+  width: 400px;
   margin: 0 10%;
   @media (max-width: 600px) {
     flex-direction: column;
@@ -44,8 +39,9 @@ const TrackResults = styled.div`
   background-color: rgba(33, 33, 33, 0.6);
   display: flex;
   flex-direction: column;
-  flex: 1;
+  ${'' /* flex: 1; */}
   height: 550px;
+  width: 400px;
   margin: 0 10%;
   @media (max-width: 600px) {
     flex-direction: column;
@@ -54,8 +50,8 @@ const TrackResults = styled.div`
 `;
 
 const ResultsTitle = styled.h3`
-  margin-top: 3%;
-  font-size: 2.5em;
+  margin-top: 2%;
+  font-size: 2.25em;
 `;
 
 const ArtistCard = styled.div`
@@ -85,7 +81,8 @@ export default function Cards(props) {
   // console.log("props", props);
   // console.log("props artist", props.artistResults[0]);
   // console.log("props track", props.trackResults);
-  // set state for an array of savedSongs
+
+  // set state for an array of savedSongs??
 
   // onClick handler needed to add the item to the savedSongs array(spread operator)
 

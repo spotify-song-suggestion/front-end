@@ -24,7 +24,6 @@ const FooterDiv = styled.div`
 `;
 // ***** STYLES *****
 
-
 export default function Footer() {
   return <FooterDiv>&copy; Copyright 2020</FooterDiv>;
 }
