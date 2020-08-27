@@ -54,7 +54,7 @@ function App() {
         <Route path="/search" component={Search} />
       </appContext.Provider>
 
-      <Footer />
+      <Footer/>
     </div>
   );
 }
