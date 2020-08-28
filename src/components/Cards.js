@@ -7,6 +7,7 @@ const Results = styled.div`
   justify-content: space-around;
   @media (max-width: 600px) {
     flex-direction: column;
+    align-items: center;
   }
 `;
 const SaveButton = styled.button`
@@ -26,38 +27,34 @@ const ArtistResults = styled.div`
   background-color: rgba(33, 33, 33, 0.6);
   display: flex;
   flex-direction: column;
-  ${'' /* flex: 1; */}
+  ${"" /* flex: 1; */}
   height: 550px;
   width: 400px;
-  margin: 0 10%;
-  @media (max-width: 600px) {
-    flex-direction: column;
-    margin: 10px 0;
-  }
+  margin-bottom: 30px;
 `;
 const TrackResults = styled.div`
   background-color: rgba(33, 33, 33, 0.6);
   display: flex;
   flex-direction: column;
-  ${'' /* flex: 1; */}
+  ${"" /* flex: 1; */}
   height: 550px;
   width: 400px;
-  margin: 0 10%;
-  @media (max-width: 600px) {
-    flex-direction: column;
-    margin: 10px 0;
-  }
 `;
 
 const ResultsTitle = styled.h3`
   margin-top: 2%;
   font-size: 2.25em;
+  @media (max-width: 600px) {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
 `;
 
 const ArtistCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `;
 const TrackCard = styled.div`
   display: flex;

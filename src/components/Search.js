@@ -8,6 +8,7 @@ const StyledSearch = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-content: center;
   color: #b3b3b3;
 `;
 
@@ -29,6 +30,10 @@ const Title = styled.h1`
   margin-top: 0.6em;
   margin-bottom: 0.6em;
   color: #b3b3b3;
+  @media (max-width: 600px){
+  font-size: 1.75em;
+  margin-bottom: 10px;
+  }
 `;
 // ***** STYLES *****
 
