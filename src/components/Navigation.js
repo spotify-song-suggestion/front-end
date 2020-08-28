@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components'
+import { appContext } from '../utilities/appContext'
 
 // ***** STYLES *****
 const StyledLink = styled(Link) 
@@ -22,20 +23,15 @@ margin: 0 auto;
 `
 // ***** STYLES *****
 
-
 export default function Navigation() {
 
+  //appContext
 
+  
+  
+ 
+  
 
-
-  const loggedIn = () => {
-    if(localStorage.getItem('Logged In') === 'true') {
-        
-      return true;
-        
-    }
-      return false;
-  }
   
   const logout = () => {
     setIsLoggedIn(false)
@@ -44,34 +40,36 @@ export default function Navigation() {
     localStorage.removeItem('currentUser')
   }
   
-  const [isLoggedIn, setIsLoggedIn] = useState(loggedIn())
-  
+  const isLoggedIn = useContext(appContext).isLoggedIn
+  const setIsLoggedIn = useContext(appContext).setIsLoggedIn;
 
-  return (
-    <StyledNav>
-      
-        
-        
-        {isLoggedIn ? 
-           <>
-            
-            <StyledLink to="/">Home</StyledLink>
-            <StyledLink to="/search">Search</StyledLink> 
-            <StyledLink onClick = {logout}>Logout</StyledLink> 
-            <StyledLink to = '/user_account'>My account</StyledLink> 
-            </>:
-            <>
-            <StyledLink to="/">Home</StyledLink>
-            <StyledLink to="/search">Search</StyledLink> 
-            <StyledLink to="/login">Login</StyledLink> 
-            <StyledLink to = '/signup'>Sign Up</StyledLink>
-            
-            </>
-            }
-      
-    </StyledNav>
+  
+  
+  const LoggedInNavigation = ()=> {
     
-  );
+    return (
+        <StyledNav>
+          <StyledLink to="/">Home</StyledLink>
+          <StyledLink to="/search">Search</StyledLink> 
+          <StyledLink  onClick = {logout}>Logout</StyledLink> 
+          <StyledLink  to = '/user_account'>My account</StyledLink>
+        </StyledNav>
+      )
+    }
+    const LoggedOutNavigation = ()=> {
+    
+      return (
+          <StyledNav>
+            <StyledLink to="/">Home</StyledLink>
+            <StyledLink to="/search">Search</StyledLink> 
+            <StyledLink  to="/login">Login</StyledLink> 
+            <StyledLink  to = '/signup'>Sign Up</StyledLink>
+          </StyledNav>
+        )
+      }
+
+    
+  return (<>{isLoggedIn ? <LoggedInNavigation/>:<LoggedOutNavigation/>}</>);
 }
 
 

@@ -106,8 +106,9 @@ const [isLoggedIn, setIsLoggedIn] = useState(loggedIn())
 //set onClick function to remove a saved song.
 const onClick = e =>{
   //take artistResults and add set the to setSaved songs
-  setSavedSongs([...savedSongs, props.artistResults])
-  console.log(savedSongs)
+  
+  setSavedSongs( [...savedSongs, props.artistResults])
+  console.log('savedSongs', savedSongs)
 }
   return (
     <Results>
@@ -134,6 +135,7 @@ const onClick = e =>{
              { isLoggedIn ? <SaveButton onClick = { onClick }>Save</SaveButton>: null }
           </TrackCard>
         ))}
+        
       </TrackResults>
     </Results>
   );

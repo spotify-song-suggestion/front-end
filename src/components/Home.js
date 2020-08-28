@@ -64,9 +64,7 @@ export default function Home() {
 
      
 
-      <div className="savedSongs">
-        {/* display saved cards here Cards{saved}*/}
-      </div>
+
     </>
   );
 }

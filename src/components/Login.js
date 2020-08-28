@@ -68,6 +68,7 @@ const [errors, setErrors] = useState(initialFormState);
 
 const [credentials, setCredentials] = useState(initialFormState);
  const setCurrentUser = useContext(appContext).setCurrentUser;
+ const setIsLoggedIn = useContext(appContext).setIsLoggedIn;
 
 // Validation schema
 
@@ -106,9 +107,10 @@ password: yup
 
       .then((res) => {
         console.log(res.data);
+        setIsLoggedIn(true)
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("Logged In", true);
-        // window.location.reload()
+        
         setCurrentUser(credentials)
         localStorage.setItem('currentUser', JSON.stringify(credentials))
         console.log(credentials)

@@ -39,8 +39,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <Content>
+      
         <appContext.Provider
           value={{
             isLoggedIn: isLoggedIn,
@@ -51,14 +50,17 @@ function App() {
             setSavedSongs: setSavedSongs,
           }}
         >
-          <PrivateRoute path="/user_account" component={UserAccount} />
-          <Route exact path="/" component={Home} />
-          <Route path="/signup" component={SignUp} />
-          <Route path="/login" component={Login} />
-          <Route path="/search" component={Search} />
-        </appContext.Provider>
-      </Content>
+          <Header />
+         <Content>
+            <PrivateRoute path="/user_account" component={UserAccount} />
+            <Route exact path="/" component={Home} />
+            <Route path="/signup" component={SignUp} />
+            <Route path="/login" component={Login} />
+            <Route path="/search" component={Search} />
+          </Content>
       <Footer />
+        </appContext.Provider>
+    
     </div>
   );
 }

@@ -34,7 +34,7 @@ export default function UserAccount() {
   const newCurrentUser = JSON.parse(parsedCurrentUser)
   const savedSongs = useContext(appContext).savedSongs;
   useEffect(() => {
-    console.log(currentUser, savedSongs )
+    console.log(savedSongs, savedSongs[0], savedSongs[0] )
     
   })
 
@@ -52,7 +52,7 @@ export default function UserAccount() {
   return (
     <div className="editinfo">
       <div>
-  <h2>{newCurrentUser.username}'s aDashboard</h2>
+  <h2>{newCurrentUser.username}'s Dashboard</h2>
         <h3>Saved Songs</h3>
         <div className="savedSongsContainer">
           {/* Map over res.data and create card for each. */}

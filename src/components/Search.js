@@ -108,10 +108,7 @@ export default function Search() {
       });
   };
 
-  //appContext - Storing songs to savedSongs array
-  const currentUser = useContext(appContext).currentUser;
-  const setSavedSongs = useContext (appContext).setSavedSongs;
-  const savedSongs = useContext(appContext).savedSongs;
+
 
   return (
     <StyledSearch>
