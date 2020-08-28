@@ -112,7 +112,7 @@ password: yup
         setCurrentUser(credentials)
         localStorage.setItem('currentUser', JSON.stringify(credentials))
         console.log(credentials)
-        push("/search");
+        push("/");
         
         
       })
