@@ -10,6 +10,10 @@ export default function SavedSongs() {
 
     const parsedSongs = JSON.parse(localStorage.getItem('savedSongs'));
     console.log(parsedSongs);
+
+    const remove = e =>{
+        console.log('pussy')
+    }
     return (
         <div className = 'saved-songs-container'>
             {parsedSongs.map(parsedSong=>{
@@ -24,7 +28,7 @@ export default function SavedSongs() {
                             
                             <p className = 'popularity' >Popularity Rating: {parsedSong[0].popularity}</p>
                         </div>
-                        <img className = 'delete' src={x} alt ='remove' />
+                        <img className = 'delete' src={x} alt ='remove' onClick = {remove} />
 
                     </div>
                 )
