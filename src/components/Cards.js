@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
+import { appContext } from '../utilities/appContext'
 
 // *****Styles*****
 const Results = styled.div`
@@ -76,6 +77,9 @@ const Para = styled.p`
 `;
 // *****Styles*****
 
+
+
+
 export default function Cards(props) {
   // props come from search results
   // console.log("props", props);
@@ -83,9 +87,16 @@ export default function Cards(props) {
   // console.log("props track", props.trackResults);
 
   // set state for an array of savedSongs??
+const currentUser = useContext(appContext).currentUser;
+const setSavedSongs = useContext (appContext).setSavedSongs;
+const savedSongs = useContext(appContext).savedSongs;
 
-  // onClick handler needed to add the item to the savedSongs array(spread operator)
-
+//set onClick function to remove a saved song.
+const onClick = e =>{
+  //take artistResults and add set the to setSaved songs
+  setSavedSongs([...savedSongs, props.artistResults])
+  console.log(savedSongs)
+}
   return (
     <Results>
       <ArtistResults>
@@ -108,7 +119,7 @@ export default function Cards(props) {
             <Para>{item.name}</Para>
             <Para>Artist: {item.artists[0].name}</Para>
             <Para>Popularity: {item.popularity}</Para>
-            <SaveButton>Save</SaveButton>
+            <SaveButton onClick = { onClick }>Save</SaveButton>
           </TrackCard>
         ))}
       </TrackResults>
