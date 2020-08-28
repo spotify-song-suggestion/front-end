@@ -54,6 +54,8 @@ const LoginText = styled.span`
 const Login = (props) => {
   const { push } = useHistory();
 
+
+
   const initialFormState = {
     username: "",
     password: "",
@@ -65,7 +67,7 @@ const [buttonDisabled, setButtonDisabled] = useState(false);
 const [errors, setErrors] = useState(initialFormState);
 
 const [credentials, setCredentials] = useState(initialFormState);
-
+ const setCurrentUser = useContext(appContext).setCurrentUser;
 
 // Validation schema
 
@@ -100,15 +102,18 @@ password: yup
     axiosWithAuth()
       .post(
         "https://spotify-song-suggestor-x.herokuapp.com/api/auth/login",
-        credentials
-      )
+        credentials)
 
       .then((res) => {
         console.log(res.data);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("Logged In", true);
+        setCurrentUser(credentials)
+        localStorage.setItem('currentUser', JSON.stringify(credentials))
+        console.log(credentials)
         push("/search");
-        window.location.reload();
+        window.location.reload()
+        
       })
       .catch((err) => console.log("err", err.message));
   };
@@ -146,7 +151,9 @@ password: yup
             value={credentials.username}
             onChange={handleChanges}
           />
-        </label>
+        </label>{errors.username.length > 0 ? (
+          <p className="error">{errors.username}</p>
+        ) : null}
         <label htmlFor="password">
           <Input
             type="password"

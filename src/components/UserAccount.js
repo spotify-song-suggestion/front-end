@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { appContext } from "../utilities/appContext";
 import styled from "styled-components";
@@ -15,6 +15,9 @@ const UpdateButton = styled.button`
 `;
 
 export default function UserAccount() {
+
+
+  
   const initialState = useState({
     firstName: "",
     lastName: "",
@@ -23,10 +26,23 @@ export default function UserAccount() {
     password: "",
   });
 
-  const [currentUser, setCurrentUser] = useState({ initialState });
+  
+  const currentUser = useContext(appContext).currentUser;
+
+  const parsedCurrentUser = (localStorage.getItem('currentUser'))
+  console.log('current user is', JSON.parse(parsedCurrentUser))
+  const newCurrentUser = JSON.parse(parsedCurrentUser)
+  const savedSongs = useContext(appContext).savedSongs;
+  useEffect(() => {
+    console.log(currentUser, savedSongs )
+    
+  })
 
   const handleChanges = (e) => {
-    const updateUserInfo = { ...currentUser, [e.target.name]: e.target.value };
+    console.log(e.target.value)
+    const updatedInformation = {
+      ...newCurrentUser, [e.target.name]:e.target.value
+    }
   };
 
   const removeFromList = () => {
@@ -36,7 +52,7 @@ export default function UserAccount() {
   return (
     <div className="editinfo">
       <div>
-        <h2>'s aDashboard</h2>
+  <h2>{newCurrentUser.username}'s aDashboard</h2>
         <h3>Saved Songs</h3>
         <div className="savedSongsContainer">
           {/* Map over res.data and create card for each. */}
@@ -44,64 +60,28 @@ export default function UserAccount() {
       </div>
 
       <div className="personalInfo">
+        <h3> Edit Information </h3>
         <label>
-          {" "}
-          First Name: <br />
-          <input
-            name="firstName"
-            value={currentUser.firstName}
-            placeholder={currentUser.firstName}
-            onclick={handleChanges}
-          >
-            {currentUser.firstName}
-          </input>
-        </label>
-
-        <label>
-          {" "}
-          Last Name: <br />
-          <input
-            name="email"
-            value={currentUser.firstName}
-            placeholder={currentUser.firstName}
-            onclick={handleChanges}
-          >
-            {currentUser.firstName}
-          </input>
-        </label>
-
-        <label>
-          {" "}
-          Email: <br />
-          <input
-            name="username"
-            value={currentUser.firstName}
-            placeholder={currentUser.firstName}
-            onclick={handleChanges}
-          >
-            {currentUser.firstName}
-          </input>
-        </label>
-        <label>
-          {" "}
+          
           Username: <br />
           <input
             name="username"
-            value={currentUser.firstName}
-            placeholder={currentUser.firstName}
-            onclick={handleChanges}
+            value={newCurrentUser.username}
+            placeholder={newCurrentUser.username}
+            onChange={handleChanges}
           >
-            {currentUser.firstName}
+           
           </input>
         </label>
         <label>
-          {" "}
+          
           Password: <br />
           <input
+            type = 'password'
             name="username"
-            value={currentUser.firstName}
-            placeholder={currentUser.firstName}
-            onclick={handleChanges}
+            value={newCurrentUser.password}
+            placeholder={newCurrentUser.password}
+            onChange ={handleChanges}
           >
             {currentUser.firstName}
           </input>

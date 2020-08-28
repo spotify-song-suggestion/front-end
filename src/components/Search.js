@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Cards from "./Cards";
 import axios from "axios";
 import styled from "styled-components";
+import { appContext } from '../utilities/appContext';
 
 // ***** STYLES *****
 const StyledSearch = styled.div`
@@ -67,21 +68,22 @@ export default function Search() {
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
     console.log(searchTerm);
-    //
+    const artistUrl = `https://songsuggester-nyc.herokuapp.com/artist/${searchTerm}`;
+    const trackUrl = `https://songsuggester-nyc.herokuapp.com/track/${searchTerm}`
     if (searchTerm !== "") {
       axios
-        .get(`https://songsuggester-nyc.herokuapp.com/artist/${searchTerm}`)
+        .get(artistUrl)
         .then((response) => {
-          console.log("response", response.data);
+          console.log("artist response", response.data);
           setArtistResults([response.data]);
         })
         .catch((error) => {
           console.log("error retrieving data", error);
         });
       axios
-        .get(`https://songsuggester-nyc.herokuapp.com/track/${searchTerm}`)
+        .get(trackUrl)
         .then((response) => {
-          console.log("response", response.data);
+          console.log(" tracks response", response.data);
           setTrackResults([response.data.tracks.items[0]]);
         })
         .catch((error) => {
@@ -105,6 +107,11 @@ export default function Search() {
         console.log(err);
       });
   };
+
+  //appContext - Storing songs to savedSongs array
+  const currentUser = useContext(appContext).currentUser;
+  const setSavedSongs = useContext (appContext).setSavedSongs;
+  const savedSongs = useContext(appContext).savedSongs;
 
   return (
     <StyledSearch>

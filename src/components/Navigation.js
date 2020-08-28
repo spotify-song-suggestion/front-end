@@ -30,7 +30,9 @@ export default function Navigation() {
 
   const loggedIn = () => {
     if(localStorage.getItem('Logged In') === 'true') {
-        return true;
+        
+      return true;
+        
     }
       return false;
   }
@@ -47,18 +49,22 @@ export default function Navigation() {
   return (
     <StyledNav>
       
-        <StyledLink to="/">Home</StyledLink>
-        <StyledLink to="/search">Search</StyledLink>
+        
         
         {isLoggedIn ? 
            <>
             
+            <StyledLink to="/">Home</StyledLink>
+            <StyledLink to="/search">Search</StyledLink>
             <StyledLink onClick = {logout}>Logout</StyledLink> 
             <StyledLink to = '/user_account'>My account</StyledLink> 
             </>:
-            <> 
+            <>
+            <StyledLink to="/">Home</StyledLink>
+            <StyledLink to="/search">Search</StyledLink> 
             <StyledLink to="/login">Login</StyledLink> 
             <StyledLink to = '/signup'>Sign Up</StyledLink>
+            
             </>
             }
       
