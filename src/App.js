@@ -34,7 +34,7 @@ function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(loggedIn());
   const [currentUser, setCurrentUser] = useState({});
-
+  const [savedArtists, setSavedArtists] = useState([])
   const [savedSongs, setSavedSongs] = useState([]);
 
   return (
@@ -48,6 +48,8 @@ function App() {
             setCurrentUser: setCurrentUser,
             savedSongs: savedSongs,
             setSavedSongs: setSavedSongs,
+            savedArtists: savedArtists,
+            setSavedArtists: setSavedArtists,
           }}
         >
           <Header />

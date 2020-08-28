@@ -87,6 +87,8 @@ export default function Cards(props) {
 const currentUser = useContext(appContext).currentUser;
 const setSavedSongs = useContext (appContext).setSavedSongs;
 const savedSongs = useContext(appContext).savedSongs;
+const savedArtists = useContext(appContext).savedArtists;
+const setSavedArtists = useContext(appContext).setSavedArtists;
 const loggedIn = () => {
   if(localStorage.getItem('Logged In') === 'true') {
       
@@ -104,11 +106,19 @@ const logout = () => {
 
 const [isLoggedIn, setIsLoggedIn] = useState(loggedIn())
 //set onClick function to remove a saved song.
-const onClick = e =>{
+const onClickArtists = e =>{
   //take artistResults and add set the to setSaved songs
   
-  setSavedSongs( [...savedSongs, props.artistResults])
-  console.log('savedSongs', savedSongs)
+  setSavedArtists( [...savedArtists, props.artistResults])
+  localStorage.setItem('savedArtists', JSON.stringify([...savedArtists, props.artistResults]))
+  console.log('savedArtists added', savedArtists)
+}
+
+const onClickSongs = e =>{
+  //take artistResults and add set the to setSaved songs
+  localStorage.setItem('savedSongs', JSON.stringify([...savedSongs, props.trackResults]))
+  setSavedSongs( [...savedSongs, props.trackResults])
+  console.log('savedSongs added',savedSongs)
 }
   return (
     <Results>
@@ -120,7 +130,7 @@ const onClick = e =>{
             <Para>{item.name}</Para>
             <Para>Genres: {item.genres}</Para>
             <Para>Popularity: {item.popularity}</Para>
-            { isLoggedIn ? <SaveButton onClick = { onClick }>Save</SaveButton>: null }
+            { isLoggedIn ? <SaveButton onClick = { onClickArtists }>Save</SaveButton>: null }
           </ArtistCard>
         ))}
       </ArtistResults>
@@ -132,10 +142,9 @@ const onClick = e =>{
             <Para>{item.name}</Para>
             <Para>Artist: {item.artists[0].name}</Para>
             <Para>Popularity: {item.popularity}</Para>
-             { isLoggedIn ? <SaveButton onClick = { onClick }>Save</SaveButton>: null }
+             { isLoggedIn ? <SaveButton onClick = { onClickSongs }>Save</SaveButton>: null }
           </TrackCard>
         ))}
-        
       </TrackResults>
     </Results>
   );

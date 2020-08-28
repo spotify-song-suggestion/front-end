@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { appContext } from "../utilities/appContext";
 import styled from "styled-components";
+import SavedSongs from './SavedSongs';
 
 // Styles for button moved from App.css to here
 const UpdateButton = styled.button`
@@ -33,8 +34,12 @@ export default function UserAccount() {
   console.log('current user is', JSON.parse(parsedCurrentUser))
   const newCurrentUser = JSON.parse(parsedCurrentUser)
   const savedSongs = useContext(appContext).savedSongs;
+  const savedArtists = useContext(appContext).savedArtists;
+
+
+
   useEffect(() => {
-    console.log(savedSongs, savedSongs[0], savedSongs[0] )
+    console.log(JSON.parse(localStorage.getItem('savedArtists')), JSON.parse(localStorage.getItem('savedSongs')) )
     
   })
 
@@ -51,12 +56,10 @@ export default function UserAccount() {
 
   return (
     <div className="editinfo">
-      <div>
+      <div className = 'main-saved-song-container'>
   <h2>{newCurrentUser.username}'s Dashboard</h2>
         <h3>Saved Songs</h3>
-        <div className="savedSongsContainer">
-          {/* Map over res.data and create card for each. */}
-        </div>
+        <SavedSongs/>
       </div>
 
       <div className="personalInfo">

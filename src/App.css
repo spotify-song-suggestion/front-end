@@ -113,6 +113,7 @@ a:hover {
   flex-direction: column;
   padding: 1% 5% 1% 5%;
   border: solid #1db954 2px;
+  height: 270px;
 }
 
 .personalInfo label {
@@ -175,3 +176,54 @@ a:hover {
   color: #b3b3b3;
   text-decoration: none;
 } */
+
+
+.main-saved-song-container{
+  width: 650px;
+}
+
+.saved-songs-container{
+  overflow-y: scroll;
+  height: 750px;
+  width: 550px;
+
+  
+}
+
+.play{
+  height: 30px;
+  width: 30px;
+  
+  margin-top: 3%;
+}
+
+.delete{
+  height: 15px;
+  width: 15px;
+ 
+  margin-top: 5%;
+}
+
+.song{
+  border: #1db954 solid 1px;
+  background-color: grey;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: space-evenly;
+  height: 10%;
+  border-radius: 2px;
+  margin: 0 auto;
+  
+}
+
+
+.song:hover{
+  background-color: #1db954;
+  border: black;
+}
+
+.song h3{
+  font-size: 1.3rem;
+}
+
