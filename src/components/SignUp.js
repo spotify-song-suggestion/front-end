@@ -217,7 +217,7 @@ export default function SignUp() {
             //data-cy="firstName"
             type="text"
             name="username"
-            placeholder="username"
+            placeholder="Username"
             value={newMember.username}
             onChange={inputChange}
           />

@@ -1,9 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axiosWithAuth from "../utilities/axiosWithAuth";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { appContext } from "../utilities/appContext";
+import * as yup from "yup";
 
+
+// *****Styles*****
 const Input = styled.input`
   background-color: rgba(33, 33, 33, 0.9);
   height: 2em;
@@ -37,11 +40,16 @@ const LoginButton = styled.button`
   font-size: 1.25em;
   border-radius: 10px;
   background-color: rgba(29, 185, 84, 0.8);
+  
 `;
 const LoginText = styled.span`
   color: #b3b3b3;
   text-shadow: 1px 1px #212121;
 `;
+
+// *****Styles*****
+
+
 
 const Login = (props) => {
   const { push } = useHistory();
@@ -51,12 +59,40 @@ const Login = (props) => {
     password: "",
   };
 
-  const [credentials, setCredentials] = useState(initialFormState);
+// state for whether our button should be disabled or not.
+const [buttonDisabled, setButtonDisabled] = useState(false);
+// state for our errors
+const [errors, setErrors] = useState(initialFormState);
+
+const [credentials, setCredentials] = useState(initialFormState);
+
+
+// Validation schema
+
+const formSchema = yup.object().shape({
+username: yup
+.string()
+.required("Username is required"),
+password: yup
+.string()
+.required("Password is required")
+});
+
+ //Activate that button if everything is ok!
+ useEffect(() => {
+  formSchema.isValid(credentials).then((isValid) => {
+    setButtonDisabled(!isValid);
+  });
+}, [credentials]);
+
+  
 
   const handleChanges = (e) => {
     e.persist();
     e.preventDefault();
+    validateChange(e);
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
+    
   };
 
   const handleSubmit = (e) => {
@@ -76,6 +112,27 @@ const Login = (props) => {
       })
       .catch((err) => console.log("err", err.message));
   };
+  //validate the changes
+  const validateChange = (e) => {
+    yup
+      .reach(formSchema, e.target.name)
+      .validate(e.target.value)
+      .then((valid) => {
+        setErrors({
+          ...errors,
+          [e.target.name]: "",
+        });
+      })
+      .catch((err) => {
+        setErrors({
+          ...errors,
+          [e.target.name]: err.errors[0],
+        });
+      });
+  };
+
+
+
 
   return (
     <div>
@@ -99,7 +156,7 @@ const Login = (props) => {
             onChange={handleChanges}
           />
         </label>
-        <LoginButton type="submit">
+        <LoginButton type="submit" disabled={buttonDisabled}>
           <LoginText>Login</LoginText>
         </LoginButton>
       </LoginForm>

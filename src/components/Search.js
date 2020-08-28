@@ -11,7 +11,6 @@ const StyledSearch = styled.div`
   color: #b3b3b3;
 `;
 
-
 const Input = styled.input`
   background-color: rgba(33, 33, 33, 0.9);
   height: 2em;
@@ -27,18 +26,19 @@ const Input = styled.input`
   color: #e8e8e8;
 `;
 const Title = styled.h1`
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-top: 0.6em;
+  margin-bottom: 0.6em;
   color: #b3b3b3;
 `;
 // ***** STYLES *****
 
 export default function Search() {
-  // Initial state for search
+  // Initial state for search. Needed to set state for Artist and Song because we are hitting two distinct endpoints- /artist and /track.
   const [searchTerm, setSearchTerm] = useState("");
   const [artistResults, setArtistResults] = useState([]);
   const [trackResults, setTrackResults] = useState([]);
-  // Get the initial data set
+
+  // Get the initial data set. We are getting data back from /artist and /track based on the user's input.
   useEffect(() => {
     axios
       .get(`https://songsuggester-nyc.herokuapp.com/artist/${searchTerm}`)
@@ -58,11 +58,11 @@ export default function Search() {
       });
   }, [searchTerm]);
 
-  // Handling changing inputs to the search field
+  // Handling changing inputs to the search field. The search updates itself as the user types additional text.
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
     console.log(searchTerm);
-
+    //
     if (searchTerm !== "") {
       axios
         .get(`https://songsuggester-nyc.herokuapp.com/artist/${searchTerm}`)
@@ -84,6 +84,8 @@ export default function Search() {
         });
     }
   };
+
+  // Not my function
   const onSubmit = (e) => {
     e.preventDefault();
     axios
@@ -114,9 +116,8 @@ export default function Search() {
           />
         </label>
       </form>
-
+      {/* Render Cards with results for Artists and Tracks that match the search term. */}
       <Cards artistResults={artistResults} trackResults={trackResults} />
-      
     </StyledSearch>
   );
 }
