@@ -43,13 +43,12 @@ export default function UserAccount() {
     
   })
 
-  const handleChanges = (e) => {
-    console.log(e.target.value)
-    const updatedInformation = {
-      ...newCurrentUser, [e.target.name]:e.target.value
-    }
+  const updateInfo = (e) => {
+    axios.put('https://spotify-song-suggestor-x.herokuapp.com/api/auth/update')
   };
+  const handleChanges = e => {
 
+  }
   const removeFromList = () => {
     //function to remove saved song from list
   };
@@ -64,33 +63,35 @@ export default function UserAccount() {
 
       <div className="personalInfo">
         <h3> Edit Information </h3>
-        <label>
-          
-          Username: <br />
-          <input
-            name="username"
-            value={newCurrentUser.username}
-            placeholder={newCurrentUser.username}
-            onChange={handleChanges}
-          >
-           
-          </input>
-        </label>
-        <label>
-          
-          Password: <br />
-          <input
-            type = 'password'
-            name="username"
-            value={newCurrentUser.password}
-            placeholder={newCurrentUser.password}
-            onChange ={handleChanges}
-          >
-            {currentUser.firstName}
-          </input>
-        </label>
-
-        <UpdateButton>Update Information</UpdateButton>
+        
+          <label>
+            
+            Username: <br />
+            <input
+              name="username"
+              value={newCurrentUser.username}
+              placeholder={newCurrentUser.username}
+              onChange={handleChanges}
+            >
+             
+            </input>
+          </label>
+          <label>
+            
+            Password: <br />
+            <input
+              type = 'password'
+              name="username"
+              value={newCurrentUser.password}
+              placeholder={newCurrentUser.password}
+              onChange ={handleChanges}
+            >
+              {currentUser.firstName}
+            </input>
+          </label>
+  
+          <UpdateButton>Update Information</UpdateButton>
+   
       </div>
     </div>
   );

@@ -180,12 +180,15 @@ a:hover {
 
 .main-saved-song-container{
   width: 650px;
+  
 }
 
 .saved-songs-container{
   overflow-y: scroll;
   height: 750px;
   width: 550px;
+  margin: 0 auto;
+
 
   
 }
@@ -212,7 +215,6 @@ a:hover {
   text-align: center;
   justify-content: space-evenly;
   height: 10%;
-  border-radius: 2px;
   margin: 0 auto;
   
 }
@@ -227,3 +229,6 @@ a:hover {
   font-size: 1.3rem;
 }
 
+.middle-div{
+  width: 230px;
+}

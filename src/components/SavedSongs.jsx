@@ -12,27 +12,29 @@ export default function SavedSongs() {
     console.log(parsedSongs);
 
     const remove = e =>{
-        console.log('pussy')
+        console.log(' song removed ' )
     }
+
+    
     return (
         <div className = 'saved-songs-container'>
-            {parsedSongs.map(parsedSong=>{
-                console.log('mapping over parsed songs', parsedSong)
-                
-                
-                return(
-                    <div className = 'song'>
-                        <img className = 'play' src = {play} alt = 'play'/>
-                        <div>
-                            <h3 className = 'artist-name'>{parsedSong[0].artists[0].name} - <span className = 'album-type'>{parsedSong[0].album.album_type}</span></h3>
-                            
-                            <p className = 'popularity' >Popularity Rating: {parsedSong[0].popularity}</p>
-                        </div>
-                        <img className = 'delete' src={x} alt ='remove' onClick = {remove} />
-
+            {(parsedSongs != null ) ? <>{parsedSongs.map(parsedSong=>{
+            console.log('mapping over parsed songs', parsedSong)
+            
+            
+            return(
+                <div className = 'song' key ={parsedSong[0].id} >
+                    <img className = 'play' src = {play} alt = 'play'/>
+                    <div className = 'middle-div'>
+                        <h3 className = 'artist-name'>{parsedSong[0].artists[0].name} - <span className = 'album-type'>{parsedSong[0].album.album_type}</span></h3>
+                        
+                        <p className = 'popularity' >Popularity Rating: {parsedSong[0].popularity}</p>
                     </div>
-                )
-            })}
+                    <img className = 'delete' src={x} alt ='remove' onClick = {remove} />
+
+                </div>
+            )
+        })} </>: <div>You have not added any songs!</div>}
         </div>
     )
 }

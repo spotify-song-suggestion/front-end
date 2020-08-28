@@ -38,6 +38,9 @@ export default function Navigation() {
     localStorage.removeItem('token')
     localStorage.removeItem('Logged In')
     localStorage.removeItem('currentUser')
+    localStorage.removeItem('savedSongs')
+    localStorage.removeItem('savedArtists')
+
   }
   
   const isLoggedIn = useContext(appContext).isLoggedIn
@@ -52,7 +55,7 @@ export default function Navigation() {
           <StyledLink to="/">Home</StyledLink>
           <StyledLink to="/search">Search</StyledLink> 
           <StyledLink  onClick = {logout}>Logout</StyledLink> 
-          <StyledLink  to = '/user_account'>My account</StyledLink>
+          <StyledLink  to = '/user_account'>My Account</StyledLink>
         </StyledNav>
       )
     }
