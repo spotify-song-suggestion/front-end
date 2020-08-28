@@ -108,11 +108,11 @@ password: yup
         console.log(res.data);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("Logged In", true);
-        setTimeout(()=>{document.location.reload()},1000)
+        setTimeout(()=>{document.location.reload()}, 1000)
         setCurrentUser(credentials)
         localStorage.setItem('currentUser', JSON.stringify(credentials))
         console.log(credentials)
-        push("/");
+        push("/search");
         
         
       })
