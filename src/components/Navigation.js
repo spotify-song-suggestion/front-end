@@ -41,6 +41,7 @@ export default function Navigation() {
     setIsLoggedIn(false)
     localStorage.removeItem('token')
     localStorage.removeItem('Logged In')
+    localStorage.removeItem('currentUser')
   }
   
   const [isLoggedIn, setIsLoggedIn] = useState(loggedIn())
@@ -54,7 +55,8 @@ export default function Navigation() {
         {isLoggedIn ? 
            <>
             
-          
+            <StyledLink to="/">Home</StyledLink>
+            <StyledLink to="/search">Search</StyledLink> 
             <StyledLink onClick = {logout}>Logout</StyledLink> 
             <StyledLink to = '/user_account'>My account</StyledLink> 
             </>:
