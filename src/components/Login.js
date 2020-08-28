@@ -112,6 +112,7 @@ password: yup
         localStorage.setItem('currentUser', JSON.stringify(credentials))
         console.log(credentials)
         push("/search");
+        window.location.reload()
         
       })
       .catch((err) => console.log("err", err.message));
