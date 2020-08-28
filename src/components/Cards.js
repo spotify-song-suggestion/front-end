@@ -90,7 +90,22 @@ export default function Cards(props) {
 const currentUser = useContext(appContext).currentUser;
 const setSavedSongs = useContext (appContext).setSavedSongs;
 const savedSongs = useContext(appContext).savedSongs;
+const loggedIn = () => {
+  if(localStorage.getItem('Logged In') === 'true') {
+      
+    return true;
+      
+  }
+    return false;
+}
 
+const logout = () => {
+  setIsLoggedIn(false)
+  localStorage.removeItem('token')
+  localStorage.removeItem('Logged In')
+}
+
+const [isLoggedIn, setIsLoggedIn] = useState(loggedIn())
 //set onClick function to remove a saved song.
 const onClick = e =>{
   //take artistResults and add set the to setSaved songs
@@ -107,7 +122,7 @@ const onClick = e =>{
             <Para>{item.name}</Para>
             <Para>Genres: {item.genres}</Para>
             <Para>Popularity: {item.popularity}</Para>
-            <SaveButton>Save</SaveButton>
+            { isLoggedIn ? <SaveButton onClick = { onClick }>Save</SaveButton>: null }
           </ArtistCard>
         ))}
       </ArtistResults>
@@ -119,7 +134,7 @@ const onClick = e =>{
             <Para>{item.name}</Para>
             <Para>Artist: {item.artists[0].name}</Para>
             <Para>Popularity: {item.popularity}</Para>
-            <SaveButton onClick = { onClick }>Save</SaveButton>
+             { isLoggedIn ? <SaveButton onClick = { onClick }>Save</SaveButton>: null }
           </TrackCard>
         ))}
       </TrackResults>
