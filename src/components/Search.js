@@ -63,12 +63,8 @@ export default function Search() {
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
     console.log(searchTerm);
-<<<<<<< HEAD
     const artistUrl = `https://songsuggester-nyc.herokuapp.com/artist/${searchTerm}`;
     const trackUrl = `https://songsuggester-nyc.herokuapp.com/track/${searchTerm}`
-=======
-    //
->>>>>>> e8fd168aaf70e980123fc80c89af7a9aa8be0b41
     if (searchTerm !== "") {
       axios
         .get(artistUrl)

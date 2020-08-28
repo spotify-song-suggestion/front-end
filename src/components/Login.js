@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, { useState, useEffect, useContext } from "react";
-=======
 import React, { useState, useContext, useEffect } from "react";
->>>>>>> e8fd168aaf70e980123fc80c89af7a9aa8be0b41
 import axiosWithAuth from "../utilities/axiosWithAuth";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
@@ -10,10 +6,7 @@ import { appContext } from "../utilities/appContext";
 import * as yup from "yup";
 
 
-<<<<<<< HEAD
-=======
 // *****Styles*****
->>>>>>> e8fd168aaf70e980123fc80c89af7a9aa8be0b41
 const Input = styled.input`
   background-color: rgba(33, 33, 33, 0.9);
   height: 2em;
@@ -61,31 +54,20 @@ const LoginText = styled.span`
 const Login = (props) => {
   const { push } = useHistory();
 
+
+
   const initialFormState = {
     username: "",
     password: "",
   };
 
-<<<<<<< HEAD
- 
-  const setCurrentUser = useContext(appContext).setCurrentUser;
-  const currentUser = useContext(appContext).currentUser;
-  
-  
-  useEffect(() => {
-    console.log(currentUser)
-  })
-
-  const [credentials, setCredentials] = useState(initialFormState);
-  const [errors, setErrors] = useState(initialFormState)
-=======
 // state for whether our button should be disabled or not.
 const [buttonDisabled, setButtonDisabled] = useState(false);
 // state for our errors
 const [errors, setErrors] = useState(initialFormState);
 
 const [credentials, setCredentials] = useState(initialFormState);
-
+ const setCurrentUser = useContext(appContext).setCurrentUser;
 
 // Validation schema
 
@@ -106,7 +88,6 @@ password: yup
 }, [credentials]);
 
   
->>>>>>> e8fd168aaf70e980123fc80c89af7a9aa8be0b41
 
   const handleChanges = (e) => {
     e.persist();

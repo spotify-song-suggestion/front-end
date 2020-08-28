@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 import React, { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
-=======
-import React from "react";
-// import styled from "styled-components";
->>>>>>> e8fd168aaf70e980123fc80c89af7a9aa8be0b41
 import Carousel from './Courasel'
 import axios from 'axios';
 import { appContext } from '../utilities/appContext';
@@ -48,8 +43,7 @@ export default function Home() {
     })
   })
 
-   //List of all possible moods
-   const allMoods = ['acoustic', 'relaxing', 'energy', 'joyful', 'fitness', 'rebelious', 'clean', 'explicit', 'dance', 'latin', 'foreign' ]
+
 
   return (
     <>
@@ -62,17 +56,9 @@ export default function Home() {
   
           <Carousel/>
   
-          <h3 className = 'home-h3' >Select some Moods to get suggested songs</h3>
+          <h2 className = 'home-h3' >Audio Visualizer</h2>
           {/* <HomeSubhead >Select some Moods to get suggested songs</HomeSubhead> */}
 
-
-          <div className = 'mood-container'>
-            {allMoods.map(mood=>(
-                            <label className = 'mood-label' key={mood}>
-                                {mood}:<input className = 'mood-input' type='checkbox' name={mood} ></input>
-                            </label>
-                        ))}
-          </div>
         </div>
      {/* </HomeDiv> */}
 
