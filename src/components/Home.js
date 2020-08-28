@@ -1,10 +1,33 @@
+<<<<<<< HEAD
 import React, { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
+=======
+import React from "react";
+// import styled from "styled-components";
+>>>>>>> e8fd168aaf70e980123fc80c89af7a9aa8be0b41
 import Carousel from './Courasel'
 import axios from 'axios';
 import { appContext } from '../utilities/appContext';
 
 
+
+// These are for styling using styled components.
+// const HomeDiv= styled.div
+// `display: flex;
+// flex-direction: column;
+// align-items: center;
+// `
+// const HomeHeadline= styled.h1 
+// ` margin-top: .6em;
+// margin-bottom: .6em;
+// color: #b3b3b3;
+// `
+// const HomeSubhead= styled.h3 
+// ` margin-top: .5em;
+// margin-bottom: .4em;
+// font-size: 2.25em;
+// color: #b3b3b3;
+// `
 
 export default function Home() {
 
@@ -30,20 +53,28 @@ export default function Home() {
 
   return (
     <>
-      <div className = 'home-div'>
-        <h1 className = 'home-h1'>Welcome to the song suggester! </h1>
 
-        <Carousel/>
+     {/* <HomeDiv> */}
+     {/*Commented out elements use styled components */}
+        <div className = 'home-div'>
+          <h1 className = 'home-h1'>Welcome to the song suggester! </h1>
+          {/* <HomeHeadline>Welcome to the song suggester! </HomeHeadline> */}
+  
+          <Carousel/>
+  
+          <h3 className = 'home-h3' >Select some Moods to get suggested songs</h3>
+          {/* <HomeSubhead >Select some Moods to get suggested songs</HomeSubhead> */}
 
-        <h3 className = 'home-h3' >Select some Moods to get suggested songs</h3>
-        <div className = 'mood-container'>
-          {allMoods.map(mood=>(
-                          <label className = 'mood-label' key={mood}>
-                              {mood}:<input className = 'mood-input' type='checkbox' name={mood} ></input>
-                          </label>
-                      ))}
+
+          <div className = 'mood-container'>
+            {allMoods.map(mood=>(
+                            <label className = 'mood-label' key={mood}>
+                                {mood}:<input className = 'mood-input' type='checkbox' name={mood} ></input>
+                            </label>
+                        ))}
+          </div>
         </div>
-      </div>
+     {/* </HomeDiv> */}
 
      
 
