@@ -7,9 +7,12 @@ import { appContext } from '../utilities/appContext';
 
 
 export default function Home() {
+
+    const setCurrentUser = useContext(appContext).setCurrentUser;
+    const currentUser = useContext(appContext).currentUser;
+
   //get request to get saved cards
 
-  const currentUser = useContext(appContext).currentUser;
   useEffect(()=>{
     console.log(currentUser)
 

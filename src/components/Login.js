@@ -1,8 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axiosWithAuth from "../utilities/axiosWithAuth";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { appContext } from "../utilities/appContext";
+
 
 const Input = styled.input`
   background-color: rgba(33, 33, 33, 0.9);
@@ -51,7 +52,17 @@ const Login = (props) => {
     password: "",
   };
 
+ 
+  const setCurrentUser = useContext(appContext).setCurrentUser;
+  const currentUser = useContext(appContext).currentUser;
+  
+  
+  useEffect(() => {
+    console.log(currentUser)
+  })
+
   const [credentials, setCredentials] = useState(initialFormState);
+  const [errors, setErrors] = useState(initialFormState)
 
   const handleChanges = (e) => {
     e.persist();
@@ -64,15 +75,17 @@ const Login = (props) => {
     axiosWithAuth()
       .post(
         "https://spotify-song-suggestor-x.herokuapp.com/api/auth/login",
-        credentials
-      )
+        credentials)
 
       .then((res) => {
         console.log(res.data);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("Logged In", true);
+        setCurrentUser(credentials)
+        localStorage.setItem('currentUser', JSON.stringify(credentials))
+        console.log(credentials)
         push("/search");
-        window.location.reload();
+        
       })
       .catch((err) => console.log("err", err.message));
   };
@@ -89,7 +102,9 @@ const Login = (props) => {
             value={credentials.username}
             onChange={handleChanges}
           />
-        </label>
+        </label>{errors.username.length > 0 ? (
+          <p className="error">{errors.username}</p>
+        ) : null}
         <label htmlFor="password">
           <Input
             type="password"
