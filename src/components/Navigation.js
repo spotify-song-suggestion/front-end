@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { appContext } from "../utilities/appContext";
@@ -12,6 +12,7 @@ const StyledNav = styled.nav`
   @media (max-width: 600px) {
     flex-direction: column;
   }
+ 
 `;
 
 const StyledLink = styled(Link)`
@@ -19,9 +20,9 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   font-size: 1.3em;
   @media (max-width: 600px) {
-    font-size: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
+ 
 `;
 
 // ***** STYLES *****

@@ -6,25 +6,35 @@ import { appContext } from '../utilities/appContext'
 const Results = styled.div`
   display: flex;
   justify-content: space-around;
+  @media (max-width: 950px) {
+    flex-direction: column;
+    align-items: center;
+  }
   @media (max-width: 600px) {
     flex-direction: column;
     align-items: center;
   }
+ 
 `;
 const SaveButton = styled.button`
-
-  padding: 0 20px;
+  padding: 3px 25px;
   font-size: 1em;
   border-radius: 10px;
   background-color: #1db954;
   margin-top: 16px;
   color: #e8e8e8;
   overflow: hidden;
+  font-size: 1.2em;
+  font-weight: 700;
+  @media (max-width: 950px) {
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
   @media (max-width: 600px) {
     flex-direction: column;
     margin-bottom: 10px;
-    font-weight: 700;
   }
+ 
 `;
 const ArtistResults = styled.div`
   background-color: rgba(33, 33, 33, 0.6);
@@ -34,6 +44,16 @@ const ArtistResults = styled.div`
   height: 525px;
   width: 400px;
   max-height: 525px;
+  @media (max-width: 950px) {
+    flex-direction: column;
+    margin-bottom: 25px; 
+  }
+  
+  @media (max-width: 600px) {
+    flex-direction: column;
+    margin-bottom: 10px;   
+  }
+  
 `;
 const TrackResults = styled.div`
   background-color: rgba(33, 33, 33, 0.6);
@@ -48,10 +68,15 @@ const TrackResults = styled.div`
 const ResultsTitle = styled.h3`
   margin-top: 2%;
   font-size: 2.25em;
+  @media (max-width: 950px) {
+    font-size: 1.75em;
+    margin-bottom: 10px;
+  }
   @media (max-width: 600px) {
     font-size: 1.5em;
     margin-bottom: 10px;
   }
+ 
 `;
 
 const ArtistCard = styled.div`
@@ -72,7 +97,7 @@ const StyledImg = styled.img`
 `;
 
 const Para = styled.p`
-  font-size: 1.125 em;
+  font-size: 1.2em;
   margin-bottom: 8px;
 `;
 // *****Styles*****

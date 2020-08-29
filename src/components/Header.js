@@ -8,9 +8,13 @@ const MainHeader = styled.div`
   display: flex;
   position: relative;
   background-color: rgba(33, 33, 33, 0.9);
+  @media (max-width: 950px) {
+    flex-direction: column;
+  }
   @media (max-width: 600px) {
     flex-direction: column;
   }
+
 `;
 const StyledHeader = styled.div`
   background-color: rgba(33, 33, 33, 0.9);
@@ -18,6 +22,10 @@ const StyledHeader = styled.div`
 
   padding-bottom: 15px;
   padding-top: 5px;
+  @media (max-width: 950px) {
+    flex-direction: column;
+    margin: 100px 0 10px;
+  }
   @media (max-width: 600px) {
     flex-direction: column;
     margin: 100px 0 10px;
@@ -42,10 +50,15 @@ const StyledImg = styled.img`
   justify-content: center;
   align-self: center;
   margin-left: 5%;
+  @media (max-width: 950px) {
+    flex-direction: column;
+    margin: 10px auto;
+  }
   @media (max-width: 600px) {
     flex-direction: column;
     margin: 10px auto;
   }
+ 
 `;
 // ***** STYLES *****
 

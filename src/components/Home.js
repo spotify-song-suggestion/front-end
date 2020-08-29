@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useContext } from "react";
-import styled from "styled-components";
+import React, { useEffect, useContext } from "react";
+// import styled from "styled-components";
 import Carousel from './Courasel'
 import axios from 'axios';
 import { appContext } from '../utilities/appContext';
