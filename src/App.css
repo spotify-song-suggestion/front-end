@@ -14,7 +14,11 @@ a:hover {
   color: #1db954;
 }
 
-
+h2,
+h3,
+.nosave {
+  color: #b3b3b3;
+}
 
 /*SIGN UP FORM STYLING*/
 
@@ -58,7 +62,6 @@ a:hover {
   margin-left: 5%;
 }
 
-
 .carousel {
   width: 1200px;
   margin: 0 auto;
@@ -70,8 +73,6 @@ a:hover {
   height: 472px;
   object-fit: cover;
 }
-
-
 
 .home-h1 {
   text-align: left;
@@ -125,8 +126,6 @@ a:hover {
   width: 100%;
 }
 
-
-
 /* Styling is in UserAccount component */
 /* button {
   width: 150px;
@@ -177,37 +176,33 @@ a:hover {
   text-decoration: none;
 } */
 
-
-.main-saved-song-container{
+.main-saved-song-container {
   width: 650px;
-  
 }
 
-.saved-songs-container{
+.saved-songs-container {
   overflow-y: scroll;
   height: 750px;
   width: 550px;
   margin: 0 auto;
-
-
   
 }
 
-.play{
+.play {
   height: 30px;
   width: 30px;
-  
+
   margin-top: 3%;
 }
 
-.delete{
+.delete {
   height: 15px;
   width: 15px;
- 
+
   margin-top: 5%;
 }
 
-.song{
+.song {
   border: #1db954 solid 1px;
   background-color: grey;
   display: flex;
@@ -216,19 +211,17 @@ a:hover {
   justify-content: space-evenly;
   height: 10%;
   margin: 0 auto;
-  
 }
 
-
-.song:hover{
+.song:hover {
   background-color: #1db954;
   border: black;
 }
 
-.song h3{
+.song h3 {
   font-size: 1.3rem;
 }
 
-.middle-div{
+.middle-div {
   width: 230px;
 }

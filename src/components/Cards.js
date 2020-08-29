@@ -12,6 +12,7 @@ const Results = styled.div`
   }
 `;
 const SaveButton = styled.button`
+
   padding: 0 20px;
   font-size: 1em;
   border-radius: 10px;
@@ -22,6 +23,7 @@ const SaveButton = styled.button`
   @media (max-width: 600px) {
     flex-direction: column;
     margin-bottom: 10px;
+    font-weight: 700;
   }
 `;
 const ArtistResults = styled.div`
@@ -29,17 +31,18 @@ const ArtistResults = styled.div`
   display: flex;
   flex-direction: column;
   ${"" /* flex: 1; */}
-  height: 550px;
+  height: 525px;
   width: 400px;
-  margin-bottom: 30px;
+  max-height: 525px;
 `;
 const TrackResults = styled.div`
   background-color: rgba(33, 33, 33, 0.6);
   display: flex;
   flex-direction: column;
   ${"" /* flex: 1; */}
-  height: 550px;
+  height: 525px;
   width: 400px;
+  max-height: 525px;
 `;
 
 const ResultsTitle = styled.h3`
@@ -63,8 +66,8 @@ const TrackCard = styled.div`
   align-items: center;
 `;
 const StyledImg = styled.img`
-  height: 300px;
-  width: 300px;
+  height: 250px;
+  width: 250px;
   margin-bottom: 16px;
 `;
 

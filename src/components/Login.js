@@ -36,15 +36,17 @@ const LoginForm = styled.form`
 const LoginButton = styled.button`
   width: 150px;
   height: 35px;
-  padding-bottom: 5px;
   font-size: 1.25em;
   border-radius: 10px;
   background-color: rgba(29, 185, 84, 0.8);
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 const LoginText = styled.span`
   color: #b3b3b3;
   text-shadow: 1px 1px #212121;
+  font-weight: 700;
 `;
 
 // *****Styles*****

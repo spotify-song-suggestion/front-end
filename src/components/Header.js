@@ -30,18 +30,18 @@ const Title = styled.h1`
   font-size: 3.5em;
   margin: 0 auto;
   padding-bottom: 0.6em;
-  ${"" /* font-family: "Do Hyeon", sans-serif; */}
+  font-weight: 700;
   letter-spacing: 2px;
-  text-shadow: 3px 3px #121212;
+  text-shadow: 4px 4px #121212;
 `;
 const StyledImg = styled.img`
   position: absolute;
-  height: 60px;
-  width: 60px;
+  height: 80px;
+  width: 80px;
   display: flex;
   justify-content: center;
   align-self: center;
-  margin-left: 3%;
+  margin-left: 5%;
   @media (max-width: 600px) {
     flex-direction: column;
     margin: 10px auto;

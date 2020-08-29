@@ -21,19 +21,27 @@ const Input = styled.input`
   color: #e8e8e8;
 `;
 const Title = styled.h1`
-  margin-bottom: 2em;
+   margin-top: 0.6em;
+  margin-bottom: 0.6em;
+  color: #b3b3b3;
+  @media (max-width: 600px){
+  font-size: 1.75em;
+  margin-bottom: 10px;
 `;
 const SignUpButton = styled.button`
   width: 150px;
   height: 35px;
-  padding-bottom: 5px;
   font-size: 1.25em;
   border-radius: 10px;
   background-color: rgba(29, 185, 84, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 const SignUpText = styled.span`
   color: #b3b3b3;
   text-shadow: 1px 1px #212121;
+  font-weight: 700;
 `;
 // ***** STYLES *****
 
@@ -224,9 +232,9 @@ export default function SignUp() {
 
 
 
-        <button data-cy="submit" disabled={buttonDisabled} type="submit">
-          Submit
-        </button>
+        <SignUpButton data-cy="submit" disabled={buttonDisabled} type="submit">
+          <SignUpText>Submit</SignUpText>
+        </SignUpButton>
 
       </form>
     </div>
