@@ -3,7 +3,10 @@ import { appContext } from '../utilities/appContext';
 import play from '../img/play.png';
 import x from '../img/x.png'
 export default function SavedSongs() {
+  const savedSongs = useContext(appContext).savedSongs;
 
+  const parsedSongs = JSON.parse(localStorage.getItem("savedSongs"));
+  console.log(parsedSongs);
 
     const savedSongs = useContext(appContext).savedSongs;
     const setSavedSongs = useContext(appContext).setSavedSongs;

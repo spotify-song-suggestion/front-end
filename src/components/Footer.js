@@ -12,15 +12,21 @@ const FooterDiv = styled.div`
   position: absolute;
   bottom: 0;
   background-color: rgba(33, 33, 33, 0.9);
-  font-size: 25px;
+  font-size: 1.5em;
   color: #1db954;
+  @media (max-width: 950px) {
+    flex-direction: column;
+    height: 50px;
+    margin-bottom: 0;
+    font-size: 1.5em;
+  }
   @media (max-width: 600px) {
     flex-direction: column;
-    height: 20px;
+    height: 40px;
     margin-bottom: 0;
-    position: relative;
-    font-size: 14px;
+    font-size: 1.2em;
   }
+ 
 `;
 // ***** STYLES *****
 

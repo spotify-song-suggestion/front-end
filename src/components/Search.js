@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import Cards from "./Cards";
 import axios from "axios";
 import styled from "styled-components";
-import { appContext } from '../utilities/appContext';
+
 
 // ***** STYLES *****
 const StyledSearch = styled.div`
@@ -31,10 +31,15 @@ const Title = styled.h1`
   margin-top: 0.6em;
   margin-bottom: 0.6em;
   color: #b3b3b3;
-  @media (max-width: 600px){
+  @media (max-width: 950px){
   font-size: 1.75em;
-  margin-bottom: 10px;
+  margin-bottom: 1em;
   }
+  @media (max-width: 600px){
+  font-size: 1.5em;
+  margin-bottom: 1em;
+  }
+  
 `;
 // ***** STYLES *****
 
