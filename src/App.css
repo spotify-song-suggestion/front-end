@@ -149,21 +149,15 @@ a:hover {
 }
 
 .saved-songs-container{
-  
+  overflow-y: scroll;
   height: 750px;
   width: 550px;
   margin: 0 auto;
+} 
 
-
-  
+.saved-songs-container::-webkit-scrollbar-track{
+  color: #1db954;
 }
-
-.scroll_10 {
-
-  overflow-y: scroll;
-
-}
-
 .play{
   height: 30px;
   width: 30px;

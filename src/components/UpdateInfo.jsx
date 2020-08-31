@@ -26,7 +26,7 @@ const UpdateButton = styled.button`
 
     const [password, setPassword ] = useState(' ')
    
-    console.log( newCurrentUser , password);
+    console.log( newCurrentUser );
     const updatedCredentials = {username: newCurrentUser.username, password: password };
     const handleChanges = e => {
     
@@ -40,7 +40,7 @@ const UpdateButton = styled.button`
         .then(res => {
            
             console.log(currentUser)
-            console.log( 'new password posted', password)
+            console.log( 'new password posted')
             
         
         })
