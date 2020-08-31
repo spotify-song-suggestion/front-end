@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import * as yup from "yup";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { appContext } from '../utilities/appContext';
 
 // ***** STYLES *****
 const Input = styled.input`
@@ -23,18 +22,7 @@ const Input = styled.input`
 const Title = styled.h1`
   margin-bottom: 2em;
 `;
-const SignUpButton = styled.button`
-  width: 150px;
-  height: 35px;
-  padding-bottom: 5px;
-  font-size: 1.25em;
-  border-radius: 10px;
-  background-color: rgba(29, 185, 84, 0.8);
-`;
-const SignUpText = styled.span`
-  color: #b3b3b3;
-  text-shadow: 1px 1px #212121;
-`;
+
 // ***** STYLES *****
 
 export default function SignUp() {

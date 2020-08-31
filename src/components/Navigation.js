@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components'
 import { appContext } from '../utilities/appContext'
@@ -54,7 +54,7 @@ export default function Navigation() {
         <StyledNav>
           <StyledLink to="/">Home</StyledLink>
           <StyledLink to="/search">Search</StyledLink> 
-          <StyledLink  onClick = {logout}>Logout</StyledLink> 
+          <StyledLink  to= '/' onClick = {logout}>Logout</StyledLink> 
           <StyledLink  to = '/user_account'>My Account</StyledLink>
         </StyledNav>
       )

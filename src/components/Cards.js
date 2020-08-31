@@ -84,11 +84,12 @@ export default function Cards(props) {
   // console.log("props track", props.trackResults);
 
   // set state for an array of savedSongs??
-const currentUser = useContext(appContext).currentUser;
 const setSavedSongs = useContext (appContext).setSavedSongs;
 const savedSongs = useContext(appContext).savedSongs;
 const savedArtists = useContext(appContext).savedArtists;
 const setSavedArtists = useContext(appContext).setSavedArtists;
+
+
 const loggedIn = () => {
   if(localStorage.getItem('Logged In') === 'true') {
       
@@ -96,12 +97,6 @@ const loggedIn = () => {
       
   }
     return false;
-}
-
-const logout = () => {
-  setIsLoggedIn(false)
-  localStorage.removeItem('token')
-  localStorage.removeItem('Logged In')
 }
 
 const [isLoggedIn, setIsLoggedIn] = useState(loggedIn())

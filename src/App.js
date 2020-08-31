@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
-import { Route, Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { appContext } from "./utilities/appContext";
 import PrivateRoute from "./utilities/PrivateRoute";
 
@@ -18,13 +18,7 @@ const Content = styled.div`
 `;
 
 function App() {
-  const initialState = {
-    firstName: "",
-    lastName: "",
-    username: "",
-    email: "",
-    password: "",
-  };
+
   const loggedIn = () => {
     if (localStorage.getItem("Logged In") === "true") {
       return true;

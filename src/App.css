@@ -127,70 +127,41 @@ a:hover {
 
 
 
-/* Styling is in UserAccount component */
-/* button {
-  width: 150px;
-  height: 35px;
-  padding-bottom: 5px;
-  font-size: 1.25em;
-  border-radius: 10px;
-  color: white;
-  background-color: rgba(29, 185, 84, 0.8);
-} */
-/*840×472.5*/
-
-/*LOGIN FORM SIGN IN*/
-/* Styling moved to Login form */
-/* .login {
-  display: flex;
-  justify-content: space-around;
-  max-width: 550px;
-  margin: 0 auto;
-  margin-top: 3%;
-  margin-bottom: 3%;
-}
-
-.login button {
-  max-width: 150px;
-} */
-
-/* Styles moved to Header component */
-/* .header {
-  border-bottom: 1px solid black;
-  padding-bottom: 5px;
-} */
-/* Styles Moved to Navigation component */
-/* .header nav .nav-links {
-  display: flex;
-  justify-content: space-evenly;
-} */
-
-/* .nav-links {
-  display: flex;
-  justify-content: space-evenly;
-  max-width: 1300px;
-  margin: 0 auto;
-} */
-
-/* .nav-links a {
-  color: #b3b3b3;
-  text-decoration: none;
-} */
-
 
 .main-saved-song-container{
   width: 650px;
   
 }
 
+.no_saved_songs{
+
+  font-size: 2rem;
+
+  padding-top: 50%;
+
+}
+
+.no_saved_songs span:hover {
+
+  cursor: pointer;
+  color: #1db954
+
+}
+
 .saved-songs-container{
-  overflow-y: scroll;
+  
   height: 750px;
   width: 550px;
   margin: 0 auto;
 
 
   
+}
+
+.scroll_10 {
+
+  overflow-y: scroll;
+
 }
 
 .play{
