@@ -19,14 +19,16 @@ const FooterDiv = styled.div`
     height: 50px;
     margin-bottom: 0;
     font-size: 1.5em;
+    position: relative;
+    bottom: 0;
   }
   @media (max-width: 600px) {
     flex-direction: column;
     height: 40px;
     margin-bottom: 0;
     font-size: 1.2em;
+    position: relative;
   }
- 
 `;
 // ***** STYLES *****
 
