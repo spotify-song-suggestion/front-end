@@ -126,22 +126,8 @@ h3,
   width: 100%;
 }
 
-<<<<<<< HEAD
 
 
-=======
-/* Styling is in UserAccount component */
-/* button {
-  width: 150px;
-  height: 35px;
-  padding-bottom: 5px;
-  font-size: 1.25em;
-  border-radius: 10px;
-  color: white;
-  background-color: rgba(29, 185, 84, 0.8);
-} */
-/*840×472.5*/
->>>>>>> 3857eba338a9a3b43d8d5b91c91b0cfdef2cda96
 
 .main-saved-song-container{
   width: 650px;
@@ -154,7 +140,6 @@ h3,
 
   padding-top: 50%;
 
-<<<<<<< HEAD
 }
 
 .no_saved_songs span:hover {
@@ -162,10 +147,6 @@ h3,
   cursor: pointer;
   color: #1db954
 
-=======
-.main-saved-song-container {
-  width: 650px;
->>>>>>> 3857eba338a9a3b43d8d5b91c91b0cfdef2cda96
 }
 
 .saved-songs-container {
@@ -173,19 +154,12 @@ h3,
   height: 750px;
   width: 550px;
   margin: 0 auto;
-<<<<<<< HEAD
 } 
 
 .saved-songs-container::-webkit-scrollbar-track{
   color: #1db954;
 }
 .play{
-=======
-  
-}
-
-.play {
->>>>>>> 3857eba338a9a3b43d8d5b91c91b0cfdef2cda96
   height: 30px;
   width: 30px;
 

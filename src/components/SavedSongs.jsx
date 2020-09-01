@@ -8,9 +8,7 @@ export default function SavedSongs() {
   const parsedSongs = JSON.parse(localStorage.getItem("savedSongs"));
   console.log(parsedSongs);
 
-    const savedSongs = useContext(appContext).savedSongs;
     const setSavedSongs = useContext(appContext).setSavedSongs;
-    const parsedSongs = JSON.parse(localStorage.getItem('savedSongs'));
     
     console.log('the saved songs so far', parsedSongs);
     console.log(savedSongs)
@@ -45,7 +43,7 @@ export default function SavedSongs() {
                         
                         <p className = 'popularity' >Popularity Rating: {parsedSong[0].popularity}</p>
                     </div>
-                    <button onClick = {handleRemove(parsedSong[0].id)}><img className = 'delete' src={x} alt ='remove'  /></button>
+                    <button className = 'btn-saved-songs' onClick = {handleRemove(parsedSong[0].id)}><img className = 'delete' src={x} alt ='remove'  /></button>
                 </div>
             )
         })} </>: <div className = 'no_saved_songs'>You have not added any <span>music</span>!</div>}
