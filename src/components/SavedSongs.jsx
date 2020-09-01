@@ -44,7 +44,7 @@ export default function SavedSongs() {
                     Popularity Rating: {parsedSong[0].popularity}
                   </p>
                 </div>
-                <button onClick={handleRemove(parsedSong[0].id)}>
+                <button className = 'btn-saved-songs' onClick={handleRemove(parsedSong[0].id)}>
                   <img className="delete" src={x} alt="remove" />
                 </button>
               </div>
