@@ -32,6 +32,9 @@ const Title = styled.h1`
     margin-bottom: 1em;
   }
 `;
+<<<<<<< HEAD
+
+=======
 const SignUpButton = styled.button`
   width: 150px;
   height: 35px;
@@ -47,6 +50,7 @@ const SignUpText = styled.span`
   text-shadow: 1px 1px #212121;
   font-weight: 700;
 `;
+>>>>>>> 3857eba338a9a3b43d8d5b91c91b0cfdef2cda96
 // ***** STYLES *****
 
 export default function SignUp() {

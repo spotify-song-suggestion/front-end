@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
+<<<<<<< HEAD
+import { Route } from "react-router-dom";
+=======
 import { Route} from "react-router-dom";
+>>>>>>> 3857eba338a9a3b43d8d5b91c91b0cfdef2cda96
 import { appContext } from "./utilities/appContext";
 import PrivateRoute from "./utilities/PrivateRoute";
 
@@ -18,13 +22,7 @@ const Content = styled.div`
 `;
 
 function App() {
-  const initialState = {
-    firstName: "",
-    lastName: "",
-    username: "",
-    email: "",
-    password: "",
-  };
+
   const loggedIn = () => {
     if (localStorage.getItem("Logged In") === "true") {
       return true;

@@ -126,6 +126,10 @@ h3,
   width: 100%;
 }
 
+<<<<<<< HEAD
+
+
+=======
 /* Styling is in UserAccount component */
 /* button {
   width: 150px;
@@ -137,47 +141,31 @@ h3,
   background-color: rgba(29, 185, 84, 0.8);
 } */
 /*840×472.5*/
+>>>>>>> 3857eba338a9a3b43d8d5b91c91b0cfdef2cda96
 
-/*LOGIN FORM SIGN IN*/
-/* Styling moved to Login form */
-/* .login {
-  display: flex;
-  justify-content: space-around;
-  max-width: 550px;
-  margin: 0 auto;
-  margin-top: 3%;
-  margin-bottom: 3%;
+.main-saved-song-container{
+  width: 650px;
+  
 }
 
-.login button {
-  max-width: 150px;
-} */
+.no_saved_songs{
 
-/* Styles moved to Header component */
-/* .header {
-  border-bottom: 1px solid black;
-  padding-bottom: 5px;
-} */
-/* Styles Moved to Navigation component */
-/* .header nav .nav-links {
-  display: flex;
-  justify-content: space-evenly;
-} */
+  font-size: 2rem;
 
-/* .nav-links {
-  display: flex;
-  justify-content: space-evenly;
-  max-width: 1300px;
-  margin: 0 auto;
-} */
+  padding-top: 50%;
 
-/* .nav-links a {
-  color: #b3b3b3;
-  text-decoration: none;
-} */
+<<<<<<< HEAD
+}
 
+.no_saved_songs span:hover {
+
+  cursor: pointer;
+  color: #1db954
+
+=======
 .main-saved-song-container {
   width: 650px;
+>>>>>>> 3857eba338a9a3b43d8d5b91c91b0cfdef2cda96
 }
 
 .saved-songs-container {
@@ -185,10 +173,19 @@ h3,
   height: 750px;
   width: 550px;
   margin: 0 auto;
+<<<<<<< HEAD
+} 
+
+.saved-songs-container::-webkit-scrollbar-track{
+  color: #1db954;
+}
+.play{
+=======
   
 }
 
 .play {
+>>>>>>> 3857eba338a9a3b43d8d5b91c91b0cfdef2cda96
   height: 30px;
   width: 30px;
 

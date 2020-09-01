@@ -44,6 +44,27 @@ export default function Navigation() {
 
   const LoggedInNavigation = () => {
     return (
+<<<<<<< HEAD
+        <StyledNav>
+          <StyledLink to="/">Home</StyledLink>
+          <StyledLink to="/search">Search</StyledLink> 
+          <StyledLink  to= '/' onClick = {logout}>Logout</StyledLink> 
+          <StyledLink  to = '/user_account'>My Account</StyledLink>
+        </StyledNav>
+      )
+    }
+    const LoggedOutNavigation = ()=> {
+    
+      return (
+          <StyledNav>
+            <StyledLink to="/">Home</StyledLink>
+            <StyledLink to="/search">Search</StyledLink> 
+            <StyledLink  to="/login">Login</StyledLink> 
+            <StyledLink  to = '/signup'>Sign Up</StyledLink>
+          </StyledNav>
+        )
+      }
+=======
       <StyledNav>
         <StyledLink to="/">Home</StyledLink>
         <StyledLink to="/search">Search</StyledLink>
@@ -62,6 +83,7 @@ export default function Navigation() {
       </StyledNav>
     );
   };
+>>>>>>> 3857eba338a9a3b43d8d5b91c91b0cfdef2cda96
 
   return <>{isLoggedIn ? <LoggedInNavigation /> : <LoggedOutNavigation />}</>;
 }
