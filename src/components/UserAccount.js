@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import SavedSongs from './SavedSongs';
 import UpdateInfo from './UpdateInfo'
 import axios from 'axios';
+import { appContext } from '../utilities/appContext';
+import { useHistory } from 'react-router-dom';
 
 
 export default function UserAccount() {
 
   //track state for dynamic username
 
-  
-  
+  const { push } = useHistory();
+  const setIsLoggedIn = useContext(appContext).setIsLoggedIn
   
 
 
@@ -34,11 +36,18 @@ export default function UserAccount() {
 
 
       .then(res =>{
-        console.log(res.status);
+        console.log('Your request to terminate your account has been fulfilled', res.status);
+        setIsLoggedIn(false);
+        localStorage.removeItem("token");
+        localStorage.removeItem("Logged In");
+        localStorage.removeItem("currentUser");
+        localStorage.removeItem("savedSongs");
+        localStorage.removeItem("savedArtists");
+        alert('You have terminated your account!')
+        push("/");
       } )
       .catch(err => {
         console.log('Error deleting your account', err);
-        console.log()
       })
     }else if (choice === 'no'){
       alert('Your account was not deleted.')
